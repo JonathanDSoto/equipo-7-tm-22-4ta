@@ -8,7 +8,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Sign In | Velzon - Admin & Dashboard Template</title>
+    <title>Iniciar Sesión | Velzon</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -54,7 +54,6 @@
                                     <img src="<?= BASE_PATH ?>public/images/logo-light.png" alt="" height="20">
                                 </a>
                             </div>
-                            <p class="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
                         </div>
                     </div>
                 </div>
@@ -66,25 +65,23 @@
 
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Welcome Back !</h5>
-                                    <p class="text-muted">Sign in to continue to Velzon.</p>
+                                    <h5 class="text-primary">Bienvenido!</h5>
+                                    <p class="text-muted">Inicia Sesión para continuar a Velzon.</p>
                                 </div>
                                 <div class="p-2 mt-4">
                                     <form action="https://themesbrand.com/velzon/html/material/index.html">
 
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                            <label for="username" class="form-label">Correo Electrónico</label>
+                                            <input type="text" class="form-control" id="username" placeholder="Introduzca su correo electrónico">
                                         </div>
 
                                         <div class="mb-3">
-                                            <div class="float-end">
-                                                <a href="auth-pass-reset-basic.html" class="text-muted">Forgot password?</a>
-                                            </div>
-                                            <label class="form-label" for="password-input">Password</label>
+                                            
+                                            <label class="form-label" for="password-input">Contraseña</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input">
-                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted shadow-none password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                                <input type="password" class="form-control pe-5 password-input" placeholder="Introducir la contraseña" id="password-input">
+                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted shadow-none password-addon" type="button" id="password-addon"></button>
                                             </div>
                                         </div>
                                         
