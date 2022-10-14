@@ -46,19 +46,8 @@
         <!-- auth page content -->
         <div class="auth-page-content">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center mt-sm-5 mb-4 text-white-50">
-                            <div>
-                                <a href="index.html" class="d-inline-block auth-logo">
-                                    <img src="<?= BASE_PATH ?>public/images/logo-light.png" alt="" height="20">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end row -->
 
+                <!-- end row -->
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-5">
                         <div class="card mt-4">
@@ -66,7 +55,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
                                     <h5 class="text-primary">Bienvenido</h5>
-                                    <p class="text-muted">Inicia sesión para continuar en Velzon.</p>
+                                    <p class="text-muted">Inicia sesión para continuar.</p>
                                 </div>
                                 <div class="p-2 mt-4">
                                     <form action="https://themesbrand.com/velzon/html/material/index.html">
