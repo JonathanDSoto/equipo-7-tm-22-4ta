@@ -65,7 +65,7 @@
 
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Bienvenido!</h5>
+                                    <h5 class="text-primary">Bienvenido</h5>
                                     <p class="text-muted">Inicia Sesión para continuar a Velzon.</p>
                                 </div>
                                 <div class="p-2 mt-4">
