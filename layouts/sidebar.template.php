@@ -21,7 +21,6 @@
                     </div>
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
-
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="widgets.html">
                                 <i class="bx bx-group"></i> <span data-key="t-widgets">Usuarios</span>
@@ -93,7 +92,6 @@
                 </div>
                 <!-- Sidebar -->
             </div>
-
             <div class="sidebar-background"></div>
         </div>
         <!-- Left Sidebar End -->
