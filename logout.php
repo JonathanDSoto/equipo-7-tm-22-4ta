@@ -101,9 +101,10 @@
     <script src="<?= BASE_PATH ?>public/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="<?= BASE_PATH ?>public/js/plugins.js"></script>
 
-    <!-- particles js -->
-    <script src="<?= BASE_PATH ?>public/libs/particles.js/particles.js"></script>
-    
+     <!-- particles js -->
+     <script src="<?= BASE_PATH ?>public/libs/particles.js/particles.js"></script>
+    <!-- particles app js -->
+    <script src="<?= BASE_PATH ?>public/js/pages/particles.app.js"></script>
 </body>
 
 
