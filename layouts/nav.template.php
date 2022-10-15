@@ -10,87 +10,6 @@
 		                        <span></span>
 		                    </span>
 		                </button>
-
-		                <!-- App Search-->
-		                <form class="app-search d-none d-md-block">
-		                    <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
-		                        <div data-simplebar style="max-height: 320px;">
-		                            <!-- item-->
-		                            <div class="dropdown-header">
-		                                <h6 class="text-overflow text-muted mb-0 text-uppercase">Recent Searches</h6>
-		                            </div>
-
-		                            <div class="dropdown-item bg-transparent text-wrap">
-		                                <a href="index.html" class="btn btn-soft-secondary btn-sm btn-rounded">how to setup <i class="mdi mdi-magnify ms-1"></i></a>
-		                                <a href="index.html" class="btn btn-soft-secondary btn-sm btn-rounded">buttons <i class="mdi mdi-magnify ms-1"></i></a>
-		                            </div>
-		                            <!-- item-->
-		                            <div class="dropdown-header mt-2">
-		                                <h6 class="text-overflow text-muted mb-1 text-uppercase">Pages</h6>
-		                            </div>
-
-		                            <!-- item-->
-		                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-		                                <i class="ri-bubble-chart-line align-middle fs-18 text-muted me-2"></i>
-		                                <span>Analytics Dashboard</span>
-		                            </a>
-
-		                            <!-- item-->
-		                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-		                                <i class="ri-lifebuoy-line align-middle fs-18 text-muted me-2"></i>
-		                                <span>Help Center</span>
-		                            </a>
-
-		                            <!-- item-->
-		                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-		                                <i class="ri-user-settings-line align-middle fs-18 text-muted me-2"></i>
-		                                <span>My account settings</span>
-		                            </a>
-
-		                            <!-- item-->
-		                            <div class="dropdown-header mt-2">
-		                                <h6 class="text-overflow text-muted mb-2 text-uppercase">Members</h6>
-		                            </div>
-
-		                            <div class="notification-list">
-		                                <!-- item -->
-		                                <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
-		                                    <div class="d-flex">
-		                                        <img src="<?= BASE_PATH ?>public/images/users/avatar-2.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
-		                                        <div class="flex-1">
-		                                            <h6 class="m-0">Angela Bernier</h6>
-		                                            <span class="fs-11 mb-0 text-muted">Manager</span>
-		                                        </div>
-		                                    </div>
-		                                </a>
-		                                <!-- item -->
-		                                <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
-		                                    <div class="d-flex">
-		                                        <img src="<?= BASE_PATH ?>public/images/users/avatar-3.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
-		                                        <div class="flex-1">
-		                                            <h6 class="m-0">David Grasso</h6>
-		                                            <span class="fs-11 mb-0 text-muted">Web Designer</span>
-		                                        </div>
-		                                    </div>
-		                                </a>
-		                                <!-- item -->
-		                                <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
-		                                    <div class="d-flex">
-		                                        <img src="<?= BASE_PATH ?>public/images/users/avatar-5.jpg" class="me-3 rounded-circle avatar-xs" alt="user-pic">
-		                                        <div class="flex-1">
-		                                            <h6 class="m-0">Mike Bunch</h6>
-		                                            <span class="fs-11 mb-0 text-muted">React Developer</span>
-		                                        </div>
-		                                    </div>
-		                                </a>
-		                            </div>
-		                        </div>
-
-		                        <div class="text-center pt-3 pb-1">
-		                            <a href="pages-search-results.html" class="btn btn-primary btn-sm">View All Results <i class="ri-arrow-right-line ms-1"></i></a>
-		                        </div>
-		                    </div>
-		                </form>
 		            </div>
 
 		            <div class="d-flex align-items-center">
@@ -107,23 +26,21 @@
 		                                </div>
 		                                <div class="col-auto">
 		                                    <span class="badge badge-soft-warning fs-13"><span class="cartitem-badge">7</span>
-		                                        items</span>
+		                                        productos</span>
 		                                </div>
 		                            </div>
 		                        </div>
 		                        <div data-simplebar style="max-height: 300px;">
 		                            <div class="p-2">
-		                                
 		                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
 		                                    <div class="d-flex align-items-center">
 		                                        <img src="<?= BASE_PATH ?>public/images/products/img-1.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
 		                                        <div class="flex-1">
 		                                            <h6 class="mt-0 mb-1 fs-14">
-		                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Branded
-		                                                    T-Shirts</a>
+		                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Camiseta para hombre </a>
 		                                            </h6>
 		                                            <p class="mb-0 fs-12 text-muted">
-		                                                Quantity: <span>10 x $32</span>
+		                                                Cantidad: <span>10 x $32</span>
 		                                            </p>
 		                                        </div>
 		                                        <div class="px-2">
@@ -140,10 +57,10 @@
 		                                        <img src="<?= BASE_PATH ?>public/images/products/img-2.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
 		                                        <div class="flex-1">
 		                                            <h6 class="mt-0 mb-1 fs-14">
-		                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Bentwood Chair</a>
+		                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Silla de madera curvada</a>
 		                                            </h6>
 		                                            <p class="mb-0 fs-12 text-muted">
-		                                                Quantity: <span>5 x $18</span>
+		                                                Cantidad: <span>5 x $18</span>
 		                                            </p>
 		                                        </div>
 		                                        <div class="px-2">
@@ -161,7 +78,7 @@
 		                                        <div class="flex-1">
 		                                            <h6 class="mt-0 mb-1 fs-14">
 		                                                <a href="apps-ecommerce-product-details.html" class="text-reset">
-		                                                    Borosil Paper Cup</a>
+		                                                    Vaso de papel de borosil</a>
 		                                            </h6>
 		                                            <p class="mb-0 fs-12 text-muted">
 		                                                Quantity: <span>3 x $250</span>
@@ -181,11 +98,10 @@
 		                                        <img src="<?= BASE_PATH ?>public/images/products/img-6.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
 		                                        <div class="flex-1">
 		                                            <h6 class="mt-0 mb-1 fs-14">
-		                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Gray
-		                                                    Styled T-Shirt</a>
+		                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Camiseta para hombre gris</a>
 		                                            </h6>
 		                                            <p class="mb-0 fs-12 text-muted">
-		                                                Quantity: <span>1 x $1250</span>
+		                                                Cantidad: <span>1 x $1250</span>
 		                                            </p>
 		                                        </div>
 		                                        <div class="px-2">
@@ -202,10 +118,10 @@
 		                                        <img src="<?= BASE_PATH ?>public/images/products/img-5.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
 		                                        <div class="flex-1">
 		                                            <h6 class="mt-0 mb-1 fs-14">
-		                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Stillbird Helmet</a>
+		                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Casco de pájaro</a>
 		                                            </h6>
 		                                            <p class="mb-0 fs-12 text-muted">
-		                                                Quantity: <span>2 x $495</span>
+		                                                Cantidad: <span>2 x $495</span>
 		                                            </p>
 		                                        </div>
 		                                        <div class="px-2">
@@ -254,9 +170,8 @@
 		                        
 		                        <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Perfil</span></a>
 		                        <div class="dropdown-divider"></div>
-		                        
-		                        
-		                        <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Cerrar Sesión</span></a>
+		                       
+								<a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Cerrar Sesión</span></a>
 		                    </div>
 		                </div>
 		            </div>
