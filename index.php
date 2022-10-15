@@ -24,6 +24,8 @@
     <link href="<?= BASE_PATH ?>public/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="<?= BASE_PATH ?>public/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 </head>
@@ -76,7 +78,7 @@
                                         <div class="mt-4">
                                             <input type="hidden" name="action" value="access"> 
                                             <input type="hidden" name="global_token" value="<?= $_SESSION['global_token'] ?>">
-                                            <button class="btn btn-success w-100" type="submit">Iniciar Sesión</button>
+                                            <button  class="btn btn-success w-100" type="submit">Iniciar Sesión</button>
                                         </div>
 
                                         
@@ -118,6 +120,7 @@
     <script src="<?= BASE_PATH ?>public/libs/feather-icons/feather.min.js"></script>
     <script src="<?= BASE_PATH ?>public/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="<?= BASE_PATH ?>public/js/plugins.js"></script>
+    <script src="<?= BASE_PATH ?>public/js/loginF.js"></script>
 
     <!-- particles js -->
     <script src="<?= BASE_PATH ?>public/libs/particles.js/particles.js"></script>
