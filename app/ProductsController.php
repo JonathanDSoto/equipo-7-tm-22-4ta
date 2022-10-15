@@ -18,7 +18,7 @@ if (isset($_POST['action'])) {
 				$productController = new ProductsController();
 
 				$productController->createProduct($name,$slug,$description,$features,$brand_id);
-				 
+				
 			break; 
 
 			case 'update':
@@ -33,7 +33,7 @@ if (isset($_POST['action'])) {
 				$productController = new ProductsController();
 
 				$productController->updateProduct($name,$slug,$description,$features,$brand_id,$id);
-				 
+
 			break;
 
 			case 'delete':
@@ -55,17 +55,17 @@ Class ProductsController
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => '',
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 0,
-		  CURLOPT_FOLLOWLOCATION => true,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => 'GET',
-		  CURLOPT_HTTPHEADER => array(
-		    'Authorization: Bearer '.$_SESSION['token']
-		  ),
+			CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'GET',
+			CURLOPT_HTTPHEADER => array(
+				'Authorization: Bearer '.$_SESSION['token']
+			),
 		));
 
 		$response = curl_exec($curl); 
@@ -86,17 +86,17 @@ Class ProductsController
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products/slug/'.$slug,
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => '',
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 0,
-		  CURLOPT_FOLLOWLOCATION => true,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => 'GET',
-		  CURLOPT_HTTPHEADER => array(
-		    'Authorization: Bearer '.$_SESSION['token']
-		  ),
+			CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products/slug/'.$slug,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'GET',
+			CURLOPT_HTTPHEADER => array(
+				'Authorization: Bearer '.$_SESSION['token']
+			),
 		));
 
 		$response = curl_exec($curl); 
@@ -114,30 +114,29 @@ Class ProductsController
 
 	public function createProduct($name,$slug,$description,$features,$brand_id)
 	{
- 
 
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => '',
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 0,
-		  CURLOPT_FOLLOWLOCATION => true,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => 'POST',
-		  CURLOPT_POSTFIELDS => array(
-		  	'name' => $name,
-		  	'slug' => $slug,
-		  	'description' => $description,
-		  	'features' => $features,
-		  	'brand_id' => $brand_id,
-		  	'cover'=> new CURLFILE($_FILES['cover']['tmp_name'])
-		  ),
-		  CURLOPT_HTTPHEADER => array(
-		    'Authorization: Bearer '.$_SESSION['token']
-		  ),
+			CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'POST',
+			CURLOPT_POSTFIELDS => array(
+				'name' => $name,
+				'slug' => $slug,
+				'description' => $description,
+				'features' => $features,
+				'brand_id' => $brand_id,
+				'cover'=> new CURLFILE($_FILES['cover']['tmp_name'])
+			),
+			CURLOPT_HTTPHEADER => array(
+				'Authorization: Bearer '.$_SESSION['token']
+			),
 		)); 
 
 		$response = curl_exec($curl); 
@@ -157,24 +156,23 @@ Class ProductsController
 
 	public function updateProduct($name,$slug,$description,$features,$brand_id,$id)
 	{
- 
 
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => '',
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 0,
-		  CURLOPT_FOLLOWLOCATION => true,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => 'PUT',
-		  CURLOPT_POSTFIELDS => 'name='.$name.'&slug='.$slug.'&description='.$description.'&features='.$features.'&brand_id='.$brand_id.'&id='.$id,
-		  CURLOPT_HTTPHEADER => array(
-		    'Authorization: Bearer '.$_SESSION['token'],
-		    'Content-Type: application/x-www-form-urlencoded'
-		  ),
+			CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'PUT',
+			CURLOPT_POSTFIELDS => 'name='.$name.'&slug='.$slug.'&description='.$description.'&features='.$features.'&brand_id='.$brand_id.'&id='.$id,
+			CURLOPT_HTTPHEADER => array(
+				'Authorization: Bearer '.$_SESSION['token'],
+				'Content-Type: application/x-www-form-urlencoded'
+			),
 		));
 
 
@@ -198,17 +196,17 @@ Class ProductsController
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products/'.$id,
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => '',
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 0,
-		  CURLOPT_FOLLOWLOCATION => true,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => 'DELETE',
-		  CURLOPT_HTTPHEADER => array(
-		    'Authorization: Bearer '.$_SESSION['token']
-		  ),
+			CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products/'.$id,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'DELETE',
+			CURLOPT_HTTPHEADER => array(
+				'Authorization: Bearer '.$_SESSION['token']
+			),
 		));
 
 		$response = curl_exec($curl); 

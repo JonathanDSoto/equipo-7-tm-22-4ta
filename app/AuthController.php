@@ -9,14 +9,14 @@ if (isset($_POST['action'])) {
 		switch ($_POST['action']) {
 			case 'access':
 				
-				if (isset($_POST['email']) && isset($_POST['password'])) {
+				// if (isset($_POST['email']) && isset($_POST['password'])) {
 					
 					$authController = new AuthController();
 
 					$email = strip_tags($_POST['email']);
 					$password = strip_tags($_POST['password']);
 					$authController->login($email,$password);
-				}
+				// }
 
 				break;
 			case 'exit':
@@ -40,18 +40,18 @@ Class AuthController{
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => 'https://crud.jonathansoto.mx/api/login',
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => '',
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 0,
-		  CURLOPT_FOLLOWLOCATION => true,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => 'POST',
-		  CURLOPT_POSTFIELDS => array(
-		  	'email' => $email,
-		  	'password' => $password
-		  ),
+			CURLOPT_URL => 'https://crud.jonathansoto.mx/api/login',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'POST',
+			CURLOPT_POSTFIELDS => array(
+				'email' => $email,
+				'password' => $password
+			),
 		));
 
 		$response = curl_exec($curl); 
@@ -105,7 +105,7 @@ Class AuthController{
 			header("Location:".BASE_PATH."?error=true");
 		}
 	}
-
+	
 }
 
 
