@@ -1,14 +1,13 @@
         <div class="app-menu navbar-menu">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                
                 <!-- Light Logo-->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="<?= BASE_PATH ?>public/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?= BASE_PATH ?>public/images/logo-light.png" alt="" height="17">
+                        <img src="<?= BASE_PATH ?>public/images/logo-light.png" alt="" height="40">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -18,16 +17,14 @@
 
             <div id="scrollbar">
                 <div class="container-fluid">
-
                     <div id="two-column-menu">
                     </div>
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
-                        
 
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="widgets.html">
-                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Usuarios</span>
+                                <i class="bx bx-group"></i> <span data-key="t-widgets">Usuarios</span>
                             </a>
                         </li>
 
@@ -68,7 +65,7 @@
 
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarMaps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMaps">
-                                <i class="mdi mdi-map-marker-outline"></i> <span data-key="t-maps">Catálogos</span>
+                                <i class="ri-map-2-line"></i> <span data-key="t-maps">Catálogos</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarMaps">
                                 <ul class="nav nav-sm flex-column">
@@ -84,7 +81,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a href="maps-leaflet.html" class="nav-link" data-key="t-leaflet">
-                                            Etiquetas
+                                            Cupones
                                         </a>
                                     </li>
                                 </ul>

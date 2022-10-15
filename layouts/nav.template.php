@@ -2,17 +2,6 @@
 		    <div class="layout-width">
 		        <div class="navbar-header">
 		            <div class="d-flex">
-		                <!-- LOGO -->
-		                <div class="navbar-brand-box horizontal-logo">
-		                    <a href="index.html" class="logo logo-light">
-		                        <span class="logo-sm">
-		                            <img src="<?= BASE_PATH ?>public/images/logo-sm.png" alt="" height="22">
-		                        </span>
-		                        <span class="logo-lg">
-		                            <img src="<?= BASE_PATH ?>public/images/logo-light.png" alt="" height="17">
-		                        </span>
-		                    </a>
-		                </div>
 
 		                <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger shadow-none" id="topnav-hamburger-icon">
 		                    <span class="hamburger-icon">
@@ -107,14 +96,14 @@
 		            <div class="d-flex align-items-center">
 		                <div class="dropdown topbar-head-dropdown ms-1 header-item">
 		                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none" id="page-header-cart-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
-		                        <i class='bx bx-shopping-bag fs-22'></i>
+		                        <i class='ri-shopping-cart-line fs-22'></i>
 		                        <span class="position-absolute topbar-badge cartitem-badge fs-10 translate-middle badge rounded-pill bg-info">5</span>
 		                    </button>
 		                    <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end p-0 dropdown-menu-cart" aria-labelledby="page-header-cart-dropdown">
 		                        <div class="p-3 border-top-0 border-start-0 border-end-0 border-dashed border">
 		                            <div class="row align-items-center">
 		                                <div class="col">
-		                                    <h6 class="m-0 fs-16 fw-semibold"> My Cart</h6>
+		                                    <h6 class="m-0 fs-16 fw-semibold"> Mi Carrito</h6>
 		                                </div>
 		                                <div class="col-auto">
 		                                    <span class="badge badge-soft-warning fs-13"><span class="cartitem-badge">7</span>
@@ -124,15 +113,7 @@
 		                        </div>
 		                        <div data-simplebar style="max-height: 300px;">
 		                            <div class="p-2">
-		                                <div class="text-center empty-cart" id="empty-cart">
-		                                    <div class="avatar-md mx-auto my-3">
-		                                        <div class="avatar-title bg-soft-info text-info fs-36 rounded-circle">
-		                                            <i class='bx bx-cart'></i>
-		                                        </div>
-		                                    </div>
-		                                    <h5 class="mb-3">Your Cart is Empty!</h5>
-		                                    <a href="apps-ecommerce-products.html" class="btn btn-success w-md mb-3">Shop Now</a>
-		                                </div>
+		                                
 		                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
 		                                    <div class="d-flex align-items-center">
 		                                        <img src="<?= BASE_PATH ?>public/images/products/img-1.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
@@ -246,7 +227,7 @@
 		                            </div>
 
 		                            <a href="apps-ecommerce-checkout.html" class="btn btn-success text-center w-100">
-		                                Checkout
+		                                Comprar
 		                            </a>
 		                        </div>
 		                    </div>
@@ -270,16 +251,12 @@
 		                    </button>
 		                    <div class="dropdown-menu dropdown-menu-end">
 		                        <!-- item-->
-		                        <h6 class="dropdown-header">Welcome Anna!</h6>
-		                        <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
-		                        <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
-		                        <a class="dropdown-item" href="apps-tasks-kanban.html"><i class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Taskboard</span></a>
-		                        <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
+		                        
+		                        <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Perfil</span></a>
 		                        <div class="dropdown-divider"></div>
 		                        
-		                        <a class="dropdown-item" href="pages-profile-settings.html"><span class="badge bg-soft-success text-success mt-1 float-end">New</span><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
-		                        <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
-		                        <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+		                        
+		                        <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Cerrar Sesión</span></a>
 		                    </div>
 		                </div>
 		            </div>
