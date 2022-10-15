@@ -8,7 +8,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Iniciar Sesión | Velzon</title>
+    <title>Cerrar Sesión | Velzon</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- App favicon -->
@@ -45,45 +45,28 @@
         <!-- auth page content -->
         <div class="auth-page-content">
             <div class="container">
-                
+
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-5">
                         <div class="card mt-4">
-                            <div class="card-body p-4">
-                                <div class="text-center mt-2">
-                                    <lord-icon src="https://cdn.lordicon.com/rqqkvjqf.json" trigger="loop" colors="primary:#4b38b3,secondary:#08a88a" style="width:180px;height:180px">
-                                    </lord-icon>
-                                    <h5 class="text-primary">Bienvenido</h5>
-                                    <p class="text-muted">Inicia sesión para continuar.</p>
-                                </div>
-                                <div class="p-2 mt-4">
-                                    <form action="https://themesbrand.com/velzon/html/material/index.html">
+                            <div class="card-body p-4 text-center">
+                                <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="loop" colors="primary:#4b38b3,secondary:#08a88a" style="width:180px;height:180px">
+                                </lord-icon>
 
-                                        <div class="mb-3">
-                                            <label for="username" class="form-label">Correo Electrónico</label>
-                                            <input type="text" class="form-control" id="username" placeholder="Introduzca su correo electrónico">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            
-                                            <label class="form-label" for="password-input">Contraseña</label>
-                                            <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" class="form-control pe-5 password-input" placeholder="Introducir la contraseña" id="password-input">
-                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted shadow-none password-addon" type="button" id="password-addon"></button>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Iniciar Sesión</button>
-                                        </div>
-
-                                        
-                                    </form>
+                                <div class="mt-4 pt-2">
+                                    <h5>Has Cerrado Sesión</h5>
+                                    <p class="text-muted">Gracias por visitar nuestra página 
+                                    <div class="mt-4">
+                                        <a href="auth-signin-basic.html" class="btn btn-success w-100">Iniciar Sesión</a>
+                                    </div>
                                 </div>
                             </div>
                             <!-- end card body -->
                         </div>
+                        <!-- end card -->
+
                     </div>
+                    <!-- end col -->
                 </div>
                 <!-- end row -->
             </div>
@@ -98,7 +81,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <p class="mb-0 text-muted">&copy;
-                                <script>document.write(new Date().getFullYear())</script> Examen de Programación Avanzada en Internet 7MO IDS TM Unidad 4 
+                                <script>document.write(new Date().getFullYear())</script> Examen de Programación Avanzada en Internet 7MO IDS TM Unidad 4
                             </p>
                         </div>
                     </div>
@@ -109,6 +92,7 @@
     </div>
     <!-- end auth-page-wrapper -->
 
+    
     <!-- JAVASCRIPT -->
     <script src="<?= BASE_PATH ?>public/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= BASE_PATH ?>public/libs/simplebar/simplebar.min.js"></script>
@@ -119,11 +103,9 @@
 
     <!-- particles js -->
     <script src="<?= BASE_PATH ?>public/libs/particles.js/particles.js"></script>
-    <!-- particles app js -->
-    <script src="<?= BASE_PATH ?>public/js/pages/particles.app.js"></script>
-    <!-- password-addon init -->
-    <script src="<?= BASE_PATH ?>public/js/pages/password-addon.init.js"></script>
+    
 </body>
+
 
 
 </html>
