@@ -3,26 +3,24 @@ include_once "config.php";
 
 if (isset($_POST['action'])) {
 	
-	if ( isset($_POST['global_token']) && 
-		$_POST['global_token'] == $_SESSION['global_token']) {
+	if ( isset($_POST['global_token']) && $_POST['global_token'] == $_SESSION['global_token']) {
 
 		switch ($_POST['action']) {
 			case 'access':
 				
-				// if (isset($_POST['email']) && isset($_POST['password'])) {
-					
-					$authController = new AuthController();
+				if(isset($_POST['email']) && isset($_POST['password'])){
 
+					$authController = new AuthController();
 					$email = strip_tags($_POST['email']);
 					$password = strip_tags($_POST['password']);
 					$authController->login($email,$password);
-				// }
+
+				}
 
 				break;
 			case 'exit':
 
 				$authController = new AuthController();
-				
 				$email = strip_tags($_POST['email']);
 				$authController -> logout($email);
 
@@ -31,7 +29,6 @@ if (isset($_POST['action'])) {
 
 	}
 }
-
 
 Class AuthController{
 
@@ -67,9 +64,9 @@ Class AuthController{
 			$_SESSION['token']= $response->data->token;
 
 			header("Location:".BASE_PATH."products");
+			
 		}else{
 
-			#var_dump($response);
 			header("Location:".BASE_PATH."?error=true");
 		}
 
@@ -101,7 +98,6 @@ Class AuthController{
 			header("Location:".BASE_PATH."products");
 		}else{
 
-			#var_dump($response);
 			header("Location:".BASE_PATH."?error=true");
 		}
 	}
