@@ -55,6 +55,8 @@
                         </div>
                     </div>
                     <!-- end page title -->
+                    <a href ="#" class="mb-3 btn btn-primary"> + Añadir Producto </a>
+
                     <div class="card" style="width: 18rem;">
                         <img src="../public/images/products/img-4.png" class="card-img-top" alt="...">
                         <div class="card-body">
