@@ -41,19 +41,19 @@
                         </li> 
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="catalogo.php">
+                            <a class="nav-link menu-link" href="../catalogo.php">
                                 <i class="bx bx-book-open"></i> <span data-key="t-maps">Catálogos</span>
                             </a>
                         </li>
  
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="cupon.php">
+                            <a class="nav-link menu-link" href="../cupon.php">
                                 <i class=" ri-price-tag-3-line"></i> <span data-key="t-maps">Cupones</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="orden.php">
+                            <a class="nav-link" href="../orden.php">
                                 <i class="ri-newspaper-line"></i> <span data-key="t-maps">Ordenes</span>
                             </a>
 
