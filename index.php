@@ -96,19 +96,9 @@
         <!-- end auth page content -->
 
         <!-- footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center">
-                            <p class="mb-0 text-muted">&copy;
-                                <script>document.write(new Date().getFullYear())</script> Examen de Programación Avanzada en Internet 7MO IDS TM Unidad 4 
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+       
+        <?php include "layouts/footer.template.php";?>
+
         <!-- end Footer -->
     </div>
     <!-- end auth-page-wrapper -->

@@ -25,6 +25,7 @@ if (isset($_POST['action'])) {
 			case 'delete':
 
                 $id = strip_tags($_POST['id']);
+                
                 $userController = new UserController();
                 $userController->delete($id);
 
@@ -126,14 +127,14 @@ Class UserController{
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('name' => .$name.,
-            'lastname' => .$lastname.,
-            'email' => .$email.,
-            'phone_number' => .$phone_number.,
-            'created_by' => .$created_by.,
-            'role' => .$role.,
-            'password' => .$password.,
-            'profile_photo_file'=> new CURLFILE(.$profile_photo_file.)),
+            CURLOPT_POSTFIELDS => array('name' => $name,
+            'lastname' => $lastname,
+            'email' => $email,
+            'phone_number' => $phone_number,
+            'created_by' => $created_by,
+            'role' => $role,
+            'password' => $password,
+            'profile_photo_file'=> new CURLFILE($profile_photo_file)),
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$_SESSION['token']
             ),
