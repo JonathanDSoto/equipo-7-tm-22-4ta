@@ -18,8 +18,8 @@
 
 <head>
     <?php include "../layouts/head.template.php";?>    
-
     <title>Añadir Productos | Velzon</title>
+
     <!-- Plugins css -->
     <link href="assets/libs/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
 </head>
@@ -148,9 +148,9 @@
                     </form>
                 </div>
                 <!-- container-fluid -->
+                
             </div>
             <!-- End Page-content -->
-
 
             <?php include "../layouts/footer.template.php"; ?>
 
@@ -159,7 +159,6 @@
 
     </div>
     <!-- END layout-wrapper -->
-
 
     
     <?php include "../layouts/scripts.template.php"; ?>
