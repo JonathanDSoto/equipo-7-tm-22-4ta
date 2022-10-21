@@ -91,7 +91,7 @@ Class UserController{
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users/slug'.$slug,
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users/slug/'.$slug,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -151,7 +151,7 @@ Class UserController{
         if(isset($response->code) && $response->code >0 ){
             header("Location:".BASE_PATH."products/?sucess=true")
         }else {
-            header("Location:".BASE_PATH."products/?error=false")
+            header("Location:".BASE_PATH."products/?error=true")
         }
 
         //Rutas pendientes
@@ -229,7 +229,7 @@ Class UserController{
         if(isset($response->code) && $response->code >0 ){
             header("Location:".BASE_PATH."products/?success=true")
         }else {
-            header("Location:".BASE_PATH."products/?error=false")
+            header("Location:".BASE_PATH."products/?error=true")
         }
 
         //Rutas pendientes

@@ -22,10 +22,11 @@ if (isset($_POST['action'])) {
 				break;
 			case 'delete':
 
-                $id = strip_tags($_POST['id']);
-
+                // $id = strip_tags($_POST['id']);
+                // $clientcontroller = new ClientController();
+                // $clientcontroller -> delete($id)
                 $clientcontroller = new ClientController();
-                $clientcontroller -> delete($id)
+                echo json_encode($clientcontroller->delete($_POST['id']));
 
 				break;
             case 'update'
@@ -79,10 +80,16 @@ Class ClientController(){
         echo $response;
 
         //Rutas pendientes
+        // if(isset($response->code) && $response->code >0 ){
+        //     header("Location:".BASE_PATH."products/?create=true")
+        // }else {
+        //     header("Location:".BASE_PATH."products/?create=false")
+        // }
+
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?create=true")
+            header("Location:".BASE_PATH."products/?success=true")
         }else {
-            header("Location:".BASE_PATH."products/?create=false")
+            header("Location:".BASE_PATH."products/?error=true")
         }
 
     }
@@ -116,15 +123,20 @@ Class ClientController(){
         ));
 
         $response = curl_exec($curl);
-
         curl_close($curl);
         echo $response;
 
         //Rutas pendientes
+        // if(isset($response->code) && $response->code >0 ){
+        //     header("Location:".BASE_PATH."products/?update=true")
+        // }else {
+        //     header("Location:".BASE_PATH."products/?update=false")
+        // }
+
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?update=true")
+            header("Location:".BASE_PATH."products/?sucess=true")
         }else {
-            header("Location:".BASE_PATH."products/?update=false")
+            header("Location:".BASE_PATH."products/?error=false")
         }
 
     }
@@ -133,7 +145,7 @@ Class ClientController(){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/clients/11',
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/clients/'.$id,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -152,11 +164,20 @@ Class ClientController(){
         echo $response;
 
         //Rutas pendientes
-        if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?delete=true")
-        }else {
-            header("Location:".BASE_PATH."products/?delete=false")
-        }
+        // if(isset($response->code) && $response->code >0 ){
+        //     header("Location:".BASE_PATH."products/?delete=true")
+        // }else {
+        //     header("Location:".BASE_PATH."products/?delete=false")
+        // }
+
+        if ( isset($response->code) && $response->code > 0) {
+			
+			return true;
+		}else{
+
+			return false;
+		}
+
     }
 
     public function getClients(){
@@ -164,6 +185,36 @@ Class ClientController(){
 
         curl_setopt_array($curl, array(
         CURLOPT_URL => 'https://crud.jonathansoto.mx/api/clients',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+            'Authorization: Bearer '.$_SESSION['token']
+        ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        echo $response;
+        
+        if ( isset($response->code) && $response->code > 0) {
+			
+			return $response->data;
+		}else{
+
+			return array();
+		}
+    }
+
+    public function getClient($slug){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/clients/slug/'.$slug,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
