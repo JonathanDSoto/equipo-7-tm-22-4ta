@@ -7,7 +7,7 @@ if (isset($_POST['action'])) {
 	if ( isset($_POST['global_token']) && $_POST['global_token'] == $_SESSION['global_token']) {
 
 		switch ($_POST['action']) {
-			case 'edit':
+			case 'update':
 
                 $name = strip_tags($_POST['name']);
                 $lastname = strip_tags($_POST['lastname']);
@@ -19,7 +19,7 @@ if (isset($_POST['action'])) {
                 $id = strip_tags($_POST['id']);
 
                 $userController = new UserController();
-				$userController->edit($name, $lastname, $email, $phone_number, $created_by, $role, $password, $id)
+				$userController->update($name, $lastname, $email, $phone_number, $created_by, $role, $password, $id)
 			
 				break;
 			case 'delete':
@@ -52,7 +52,69 @@ if (isset($_POST['action'])) {
 
 Class UserController{
 
-    public function edit($name, $lastname, $email, $phone_number, $created_by, $role, $password, $id){
+    // public function getUser(){
+    //     $curl = curl_init();
+
+    //     curl_setopt_array($curl, array(
+    //     CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users/1',
+    //     CURLOPT_RETURNTRANSFER => true,
+    //     CURLOPT_ENCODING => '',
+    //     CURLOPT_MAXREDIRS => 10,
+    //     CURLOPT_TIMEOUT => 0,
+    //     CURLOPT_FOLLOWLOCATION => true,
+    //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    //     CURLOPT_CUSTOMREQUEST => 'GET',
+    //     CURLOPT_HTTPHEADER => array(
+    //         'Authorization: Bearer '.$_SESSION['token']
+    //     ),
+    //     ));
+
+    //     $response = curl_exec($curl);
+
+    //     curl_close($curl);
+    //     echo $response;
+
+    //     if ( isset($response->code) && $response->code > 0) {
+			
+	// 		return $response->data;
+	// 	}else{
+
+	// 		return array();
+	// 	}
+    // }
+
+    public function getUsers(){
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+            'Authorization: Bearer '.$_SESSION['token']
+        ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        echo $response;
+        
+        if ( isset($response->code) && $response->code > 0) {
+			
+			return $response->data;
+		}else{
+
+			return array();
+		}
+    }
+
+    public function update($name, $lastname, $email, $phone_number, $created_by, $role, $password, $id){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -80,9 +142,9 @@ Class UserController{
 
         //Rutas pendientes
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?edit=true")
+            header("Location:".BASE_PATH."products/?update=true")
         }else {
-            header("Location:".BASE_PATH."products/?edit=false")
+            header("Location:".BASE_PATH."products/?update=false")
         }
     }
 
