@@ -26,10 +26,11 @@ RewriteRule ^perfil-cliente/$ users/cliente.php
 RewriteRule ^cliente/$ users/usuario.php
 
 #catalogo
-RewriteRule ^catalogos/$ catalogo.php
+RewriteRule ^catalogos/$ catalogos/catalogo.php
 
 #cupon
-RewriteRule ^cupone/$ cupon.php
+RewriteRule ^cupone/$ cupones/cupon.php
 
 #orden
-RewriteRule ^ordenes/$ orden.php
+RewriteRule ^ordenes/$ ordenes/orden.php
+RewriteRule ^detalles-ordenes/$ ordenes/orden-details.php
