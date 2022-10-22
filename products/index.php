@@ -1,16 +1,5 @@
 <?php 
-
-	include "../app/ProductsController.php";
-	include "../app/BrandController.php";
-
-	$productController = new ProductsController();
-
-	$brandController = new BrandController();
-
-	// $products = $productController->getProducts();
-	// $brands = $brandController->getBrands();
-
-	#echo json_encode($_SESSION);
+    include "../app/config.php";
 ?> 
 <!doctype html>
 <html data-layout="vertical"data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">

@@ -11,7 +11,7 @@ RewriteRule ^iniciar-sesion/$ index.php
 RewriteRule ^cerrar-sesion/$ logout.php
 
 #productos
-RewriteRule ^products/$ products/index.php
+RewriteRule ^productos/$ products/index.php
 
 #añadirProductos
 RewriteRule ^añadirProductos/$ products/add-products.php
