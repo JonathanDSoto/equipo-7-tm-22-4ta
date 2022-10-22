@@ -4,10 +4,32 @@ RewriteEngine on
 #Rutas
 RewriteRule ^auth$ app/AuthController.php
 
+#iniciarSesion
+RewriteRule ^iniciar-sesion/$ index.php
+
+#cerrarSesion
+RewriteRule ^cerrar-sesion/$ logout.php
+
+#productos
+RewriteRule ^products/$ products/index.php
+
+#añadirProductos
+RewriteRule ^añadirProductos/$ products/add-products.php
 
 #detalleProducto
-RewriteRule ^products/details/(.+)/$ products/details.php?slug=$1
+RewriteRule ^detalle-producto/(.+)/$ products/details.php?slug=$1
 
+#usuariosCliente
+RewriteRule ^perfil-cliente/$ users/cliente.php
 
-#iniciarSesion
-RewriteRule ^iniciar-sesion$ index.php
+#usuarios
+RewriteRule ^cliente/$ users/usuario.php
+
+#catalogo
+RewriteRule ^catalogos/$ catalogo.php
+
+#cupon
+RewriteRule ^cupone/$ cupon.php
+
+#orden
+RewriteRule ^ordenes/$ orden.php

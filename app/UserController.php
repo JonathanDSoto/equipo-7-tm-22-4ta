@@ -19,15 +19,18 @@ if (isset($_POST['action'])) {
                 $id = strip_tags($_POST['id']);
 
                 $userController = new UserController();
-				$userController->update($name, $lastname, $email, $phone_number, $created_by, $role, $password, $id)
+				$userController->update($name, $lastname, $email, $phone_number, $created_by, $role, $password, $id);
 			
 				break;
 			case 'delete':
 
-                $id = strip_tags($_POST['id']);
+                // $id = strip_tags($_POST['id']);
                 
+                // $userController = new UserController();
+                // $userController->delete($id);
+
                 $userController = new UserController();
-                $userController->delete($id);
+                echo json_encode($userController->delete($_POST['id']));
 
 				break;
             case 'create'
@@ -42,7 +45,7 @@ if (isset($_POST['action'])) {
                 $profile_photo_file = $_FILES['profile_photo_file']);
 
                 $userController = new UserController();
-                $userController -> create($name, $lastname, $email, $phone_number, $created_by, $role, $password, $profile_photo_file)
+                $userController -> create($name, $lastname, $email, $phone_number, $created_by, $role, $password, $profile_photo_file);
             
                 break;
 		}
@@ -52,43 +55,43 @@ if (isset($_POST['action'])) {
 
 Class UserController{
 
-    // public function getUser(){
-    //     $curl = curl_init();
-
-    //     curl_setopt_array($curl, array(
-    //     CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users/1',
-    //     CURLOPT_RETURNTRANSFER => true,
-    //     CURLOPT_ENCODING => '',
-    //     CURLOPT_MAXREDIRS => 10,
-    //     CURLOPT_TIMEOUT => 0,
-    //     CURLOPT_FOLLOWLOCATION => true,
-    //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    //     CURLOPT_CUSTOMREQUEST => 'GET',
-    //     CURLOPT_HTTPHEADER => array(
-    //         'Authorization: Bearer '.$_SESSION['token']
-    //     ),
-    //     ));
-
-    //     $response = curl_exec($curl);
-
-    //     curl_close($curl);
-    //     echo $response;
-
-    //     if ( isset($response->code) && $response->code > 0) {
-			
-	// 		return $response->data;
-	// 	}else{
-
-	// 		return array();
-	// 	}
-    // }
-
     public function getUsers(){
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
         CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+            'Authorization: Bearer '.$_SESSION['token']
+        ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        echo $response;
+        
+        if ( isset($response->code) && $response->code > 0) {
+			
+			return $response->data;
+		}else{
+
+			return array();
+		}
+    }
+
+    public function getUser($slug){
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users/slug/'.$slug,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -133,26 +136,37 @@ Class UserController{
             '&created_by=' .$created_by.
             '&role=' .$role.
             '&password=' .$password.
-            '&id=' .$id.
+            '&id=' .$id,
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Bearer '.$_SESSION['token'],
+                //Pendiente linea siguiente
+                'Content-Type: application/x-www-form-urlencoded'
+            ),
         ));
 
         $response = curl_exec($curl);
         curl_close($curl);
         echo $response;
 
-        //Rutas pendientes
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?update=true")
+            header("Location:".BASE_PATH."products/?sucess=true")
         }else {
-            header("Location:".BASE_PATH."products/?update=false")
+            header("Location:".BASE_PATH."products/?error=true")
         }
+
+        //Rutas pendientes
+        // if(isset($response->code) && $response->code >0 ){
+        //     header("Location:".BASE_PATH."products/?update=true")
+        // }else {
+        //     header("Location:".BASE_PATH."products/?update=false")
+        // }
     }
 
     public function delete($id){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users/1',
+            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users/'.$id,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -169,12 +183,18 @@ Class UserController{
         curl_close($curl);
         echo $response;
 
-        //Rutas pendientes
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?delete=true")
+            return true;
         }else {
-            header("Location:".BASE_PATH."products/?delete=false")
+            return false;
         }
+
+        //Rutas pendientes
+        // if(isset($response->code) && $response->code >0 ){
+        //     header("Location:".BASE_PATH."products/?delete=true")
+        // }else {
+        //     header("Location:".BASE_PATH."products/?delete=false")
+        // }
     }
 
     public function create($name, $lastname, $email, $phone_number, $created_by, $role, $password, $profile_photo_file){
@@ -206,12 +226,19 @@ Class UserController{
         curl_close($curl);
         echo $response;
 
-        //Rutas pendientes
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?create=true")
+            header("Location:".BASE_PATH."products/?success=true")
         }else {
-            header("Location:".BASE_PATH."products/?create=false")
+            header("Location:".BASE_PATH."products/?error=true")
         }
+
+        //Rutas pendientes
+        // if(isset($response->code) && $response->code >0 ){
+        //     header("Location:".BASE_PATH."products/?create=true")
+        // }else {
+        //     header("Location:".BASE_PATH."products/?create=false")
+        // }
+
     }
 
 
