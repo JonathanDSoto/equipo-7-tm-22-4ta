@@ -65,51 +65,20 @@
                                 <div class="card-body">
                                     <div class="row gx-lg-3">
                                         <div class="col-xl-4 col-md-8 mx-auto">
-                                            <div class="product-img-slider sticky-side-div">
-                                                <div class="swiper product-thumbnail-slider p-2 rounded bg-light">
+                                            <div class="images-img-slider sticky-side-div">
+                                                <div class="swiper products-thumbnail-slider p-2 rounded bg-light">
                                                     <div class="swiper-wrapper">
                                                         <div class="swiper-slide">
-                                                            <img src="assets/images/products/img-8.png" alt="" class="img-fluid d-block" />
+                                                            <img src="<?= BASE_PATH ?>public/images/products/img-8.png" class="img-fluid d-block" alt="..."/>
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="assets/images/products/img-6.png" alt="" class="img-fluid d-block" />
+                                                            <img src="<?= BASE_PATH ?>public/images/products/img-1.png" class="img-fluid d-block" alt="..."/>
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="assets/images/products/img-1.png" alt="" class="img-fluid d-block" />
+                                                            <img src="<?= BASE_PATH ?>public/images/products/img-6.png" class="img-fluid d-block" alt="..."/>
                                                         </div>
-                                                        <div class="swiper-slide">
-                                                            <img src="assets/images/products/img-8.png" alt="" class="img-fluid d-block" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="swiper-button-next bg-white shadow"></div>
-                                                    <div class="swiper-button-prev bg-white shadow"></div>
+                                                    </div>  
                                                 </div>
-                                                <!-- end swiper thumbnail slide -->
-                                                <div class="swiper product-nav-slider mt-2">
-                                                    <div class="swiper-wrapper">
-                                                        <div class="swiper-slide">
-                                                            <div class="nav-slide-item">
-                                                                <img src="assets/images/products/img-8.png" alt="" class="img-fluid d-block" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="nav-slide-item">
-                                                                <img src="assets/images/products/img-6.png" alt="" class="img-fluid d-block" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="nav-slide-item">
-                                                                <img src="assets/images/products/img-1.png" alt="" class="img-fluid d-block" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="nav-slide-item">
-                                                                <img src="assets/images/products/img-8.png" alt="" class="img-fluid d-block" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end swiper nav slide -->
                                             </div>
                                         </div>
                                         <!-- end col -->
@@ -218,7 +187,7 @@
                                                                 <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i> Manga completa</li>
                                                                 <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i> Algodón</li>
                                                                 <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i> Todos los tamaños disponibles</li>
-                                                                <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i> 4 colores diferentes</li>
+                                                                <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i> 3 colores diferentes</li>
                                                             </ul>
                                                         </div>
                                                     </div>
