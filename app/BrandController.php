@@ -30,7 +30,7 @@ if (isset($_POST['action'])) {
 
             
 				break;
-            case 'delete'
+            case 'delete':
 
 				$brandController = new BrandController();
 				echo json_encode($brandcontroller->delete($_POST['id']));
