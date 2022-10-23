@@ -14,10 +14,10 @@ if (isset($_POST['action'])) {
 				$description = strip_tags($_POST['description']);
 				$features = strip_tags($_POST['features']);
 				$brand_id = strip_tags($_POST['brand_id']);
+				$cover = $_FILES['cover']['tmp_name'];
 
 				$productController = new ProductsController();
-
-				$productController->createProduct($name,$slug,$description,$features,$brand_id);
+				$productController->createProduct($name,$slug,$description,$features,$brand_id, $cover);
 				
 			break; 
 
@@ -31,7 +31,6 @@ if (isset($_POST['action'])) {
 				$id = strip_tags($_POST['id']);
 
 				$productController = new ProductsController();
-
 				$productController->updateProduct($name,$slug,$description,$features,$brand_id,$id);
 
 			break;
@@ -112,7 +111,7 @@ Class ProductsController
 		}
 	}
 
-	public function createProduct($name,$slug,$description,$features,$brand_id)
+	public function createProduct($name,$slug,$description,$features,$brand_id, $cover)
 	{
 
 		$curl = curl_init();
@@ -143,14 +142,20 @@ Class ProductsController
 		curl_close($curl);
 		$response = json_decode($response);
 
-		if ( isset($response->code) && $response->code > 0) {
+		if(isset($response->code) && $response->code >0 ){
+            header("Location:".BASE_PATH."products/?success=true")
+        }else {
+            header("Location:".BASE_PATH."products/?error=true")
+        }
 
-			header("Location:../products?success=true");
-		}else{ 
+		// if ( isset($response->code) && $response->code > 0) {
 
-			#var_dump($response);
-			header("Location:../products?error=true");
-		}
+		// 	header("Location:../products?success=true");
+		// }else{ 
+
+		// 	#var_dump($response);
+		// 	header("Location:../products?error=true");
+		// }
 
 	}
 
@@ -175,19 +180,24 @@ Class ProductsController
 			),
 		));
 
-
 		$response = curl_exec($curl); 
 		curl_close($curl);
 		$response = json_decode($response);
 
-		if ( isset($response->code) && $response->code > 0) {
+		if(isset($response->code) && $response->code >0 ){
+            header("Location:".BASE_PATH."products/?sucess=true")
+        }else {
+            header("Location:".BASE_PATH."products/?error=true")
+        }
 
-			header("Location:../products?success=true");
-		}else{ 
+		// if ( isset($response->code) && $response->code > 0) {
 
-			#var_dump($response);
-			header("Location:../products?error=true");
-		}
+		// 	header("Location:../products?success=true");
+		// }else{ 
+
+		// 	#var_dump($response);
+		// 	header("Location:../products?error=true");
+		// }
 
 	}
 
