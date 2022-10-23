@@ -3,6 +3,7 @@ RewriteEngine on
 
 #Rutas
 RewriteRule ^auth$ app/AuthController.php
+RewriteRule ^brand$ app/BrandController.php
 RewriteRule ^cliente$ app/ClientController.php
 RewriteRule ^coupon$ app/CouponController.php
 RewriteRule ^order$ app/OrderController.php
