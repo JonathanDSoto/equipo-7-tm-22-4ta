@@ -16,10 +16,10 @@ if (isset($_POST['action'])) {
                 $address_id = strip_tags($_POST['address_id']);
                 $order_status_id = strip_tags($_POST['order_status_id']);
                 $payment_type_id = strip_tags($_POST['payment_type_id']);
-                //Faltan mas 
+                $coupon_id = strip_tags($_POST['coupon_id']);
 
                 $orderController = new OrderController();
-                $orderController -> create($folio, $total, $is_paid, $client_id, $address_id, $order_status_id, $payment_type_id);
+                $orderController -> create($folio, $total, $is_paid, $client_id, $address_id, $order_status_id, $payment_type_id, $coupon_id);
 
 				break;
 			case 'update':
@@ -47,7 +47,7 @@ if (isset($_POST['action'])) {
 
 Class OrderController(){
 
-    public function create($folio, $total, $is_paid, $client_id, $address_id, $order_status_id, $payment_type_id){
+    public function create($folio, $total, $is_paid, $client_id, $address_id, $order_status_id, $payment_type_id, $coupon_id){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -67,26 +67,20 @@ Class OrderController(){
         'order_status_id' => $order_status_id,
         'payment_type_id' => $payment_type_id,
         'coupon_id' => $coupon_id,
-        //Que peo aqui
-        'presentations[0][id]' => '1',
-        'presentations[0][quantity]' => '2',
-        'presentations[1][id]' => '2',
-        'presentations[1][quantity]' => '2'),
         CURLOPT_HTTPHEADER => array(
             'Authorization: Bearer '.$_SESSION['token']
         ),
         ));
 
         $response = curl_exec($curl);
-
         curl_close($curl);
         echo $response;
 
         //Rutas pendientes
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?create=true")
+            header("Location:".BASE_PATH."products/?success=true")
         }else {
-            header("Location:".BASE_PATH."products/?create=false")
+            header("Location:".BASE_PATH."products/?error=true")
         }
 
     }
@@ -113,15 +107,14 @@ Class OrderController(){
         ));
 
         $response = curl_exec($curl);
-
         curl_close($curl);
         echo $response;
 
         //Rutas pendientes
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?update=true")
+            header("Location:".BASE_PATH."products/?success=true")
         }else {
-            header("Location:".BASE_PATH."products/?update=false")
+            header("Location:".BASE_PATH."products/?error=true")
         }
 
     }
@@ -130,7 +123,7 @@ Class OrderController(){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/1',
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/'.$id,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -147,12 +140,20 @@ Class OrderController(){
         curl_close($curl);
         echo $response;
 
-        //Rutas pendientes
-        if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?delete=true")
-        }else {
-            header("Location:".BASE_PATH."products/?delete=false")
-        }
+        if ( isset($response->code) && $response->code > 0) {
+			
+			return true;
+		}else{
+
+			return false;
+		}
+
+        // //Rutas pendientes
+        // if(isset($response->code) && $response->code >0 ){
+        //     header("Location:".BASE_PATH."products/?delete=true")
+        // }else {
+        //     header("Location:".BASE_PATH."products/?delete=false")
+        // }
 
     }
 
@@ -177,6 +178,38 @@ Class OrderController(){
         $response = curl_exec($curl);
         curl_close($curl);
         echo $response;
+        
+        if ( isset($response->code) && $response->code > 0) {
+			
+			return $response->data;
+		}else{
+
+			return array();
+		}
+    }
+
+    public function getOrder($slug){
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/details/'.$slug,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+            'Authorization: Bearer '.$_SESSION['token']
+        ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        echo $response;
+
         
         if ( isset($response->code) && $response->code > 0) {
 			
