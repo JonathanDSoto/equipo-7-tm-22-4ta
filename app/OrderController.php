@@ -33,11 +33,8 @@ if (isset($_POST['action'])) {
 				break;
             case 'delete'
 
-                $id = strip_tags($_POST['id']);
-            
                 $orderController = new OrderController();
-                $orderController -> delete($id);
-
+                echo json_encode($orderController->delete($_POST['id']));
 
                 break;
 		}
@@ -188,12 +185,12 @@ Class OrderController(){
 		}
     }
 
-    public function getOrder($slug){
+    public function getOrder($id){
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/details/'.$slug,
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/details/'.$id,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,

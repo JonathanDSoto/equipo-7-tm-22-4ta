@@ -104,7 +104,7 @@ Class CouponController(){
         if(isset($response->code) && $response->code >0 ){
             header("Location:".BASE_PATH."products/?success=true")
         }else {
-            header("Location:".BASE_PATH."products/?error=false")
+            header("Location:".BASE_PATH."products/?error=true")
         }
 
     }
@@ -148,7 +148,7 @@ Class CouponController(){
         if(isset($response->code) && $response->code >0 ){
             header("Location:".BASE_PATH."products/?success=true")
         }else {
-            header("Location:".BASE_PATH."products/?error=false")
+            header("Location:".BASE_PATH."products/?error=true")
         }
 
     }
@@ -221,11 +221,11 @@ Class CouponController(){
 		}
     }
 
-    public function getCoupon($slug){
+    public function getCoupon($id){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/coupons/slug/'.$slug,
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/coupons/'.$id,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
