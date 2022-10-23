@@ -41,16 +41,18 @@ if (isset($_POST['action'])) {
                 $id = strip_tags($_POST['id']);
 
                 $couponController = new CouponController();
-                $couponController -> update($name, $code, $percentage_discount, $min_amount_required, $min_product_required, $start_date, $end_date, $max_uses, $count_uses, $valid_only_first_purchase, $status, $id)
+                $couponController -> update($name, $code, $percentage_discount, $min_amount_required, $min_product_required, $start_date, $end_date, $max_uses, $count_uses, $valid_only_first_purchase, $status, $id);
 			
 
 				break;
             case 'delete'
 
-                $id = strip_tags($_POST['id']);
-            
-                $couponController = new CouponController();
-                $couponController -> delete($id);
+                $couponController  = new CouponController();
+                echo json_encode($couponController->delete($_POST['id']));
+
+                // $id = strip_tags($_POST['id']);
+                // $couponController = new CouponController();
+                // $couponController -> delete($id);
             
                 break;
 		}
@@ -93,10 +95,16 @@ Class CouponController(){
         echo $response;
 
         //Rutas pendientes
+        // if(isset($response->code) && $response->code >0 ){
+        //     header("Location:".BASE_PATH."products/?create=true")
+        // }else {
+        //     header("Location:".BASE_PATH."products/?create=false")
+        // }
+
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?create=true")
+            header("Location:".BASE_PATH."products/?success=true")
         }else {
-            header("Location:".BASE_PATH."products/?create=false")
+            header("Location:".BASE_PATH."products/?error=false")
         }
 
     }
@@ -138,18 +146,18 @@ Class CouponController(){
 
         //Rutas pendientes
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?update=true")
+            header("Location:".BASE_PATH."products/?sucess=true")
         }else {
-            header("Location:".BASE_PATH."products/?update=false")
+            header("Location:".BASE_PATH."products/?error=false")
         }
 
     }
 
-    public function delete(){
+    public function delete($id){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/coupons/1',
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/coupons/'.$id,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -166,12 +174,20 @@ Class CouponController(){
         curl_close($curl);
         echo $response;
 
+        if ( isset($response->code) && $response->code > 0) {
+			
+			return true;
+		}else{
+
+			return false;
+		}
+
         //Rutas pendientes
-        if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?delete=true")
-        }else {
-            header("Location:".BASE_PATH."products/?delete=false")
-        }
+        // if(isset($response->code) && $response->code >0 ){
+        //     header("Location:".BASE_PATH."products/?delete=true")
+        // }else {
+        //     header("Location:".BASE_PATH."products/?delete=false")
+        // }
 
     }
 
@@ -193,6 +209,37 @@ Class CouponController(){
         ));
 
         $response = curl_exec($curl);
+        curl_close($curl);
+        echo $response;
+        
+        if ( isset($response->code) && $response->code > 0) {
+			
+			return $response->data;
+		}else{
+
+			return array();
+		}
+    }
+
+    public function getCoupon($slug){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/coupons/slug/'.$slug,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+            'Authorization: Bearer '.$_SESSION['token']
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
         curl_close($curl);
         echo $response;
         
