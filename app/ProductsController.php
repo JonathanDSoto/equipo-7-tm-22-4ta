@@ -143,14 +143,20 @@ Class ProductsController
 		curl_close($curl);
 		$response = json_decode($response);
 
-		if ( isset($response->code) && $response->code > 0) {
+		if(isset($response->code) && $response->code >0 ){
+            header("Location:".BASE_PATH."products/?success=true")
+        }else {
+            header("Location:".BASE_PATH."products/?error=true")
+        }
 
-			header("Location:../products?success=true");
-		}else{ 
+		// if ( isset($response->code) && $response->code > 0) {
 
-			#var_dump($response);
-			header("Location:../products?error=true");
-		}
+		// 	header("Location:../products?success=true");
+		// }else{ 
+
+		// 	#var_dump($response);
+		// 	header("Location:../products?error=true");
+		// }
 
 	}
 
@@ -180,14 +186,20 @@ Class ProductsController
 		curl_close($curl);
 		$response = json_decode($response);
 
-		if ( isset($response->code) && $response->code > 0) {
+		if(isset($response->code) && $response->code >0 ){
+            header("Location:".BASE_PATH."products/?sucess=true")
+        }else {
+            header("Location:".BASE_PATH."products/?error=true")
+        }
 
-			header("Location:../products?success=true");
-		}else{ 
+		// if ( isset($response->code) && $response->code > 0) {
 
-			#var_dump($response);
-			header("Location:../products?error=true");
-		}
+		// 	header("Location:../products?success=true");
+		// }else{ 
+
+		// 	#var_dump($response);
+		// 	header("Location:../products?error=true");
+		// }
 
 	}
 
