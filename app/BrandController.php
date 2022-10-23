@@ -32,10 +32,8 @@ if (isset($_POST['action'])) {
 				break;
             case 'delete'
 
-				$id = strip_tags($_POST['id']);
-
 				$brandController = new BrandController();
-                $brandController -> delete($id);
+				echo json_encode($brandcontroller->delete($_POST['id']));
 
                 break;
 		}

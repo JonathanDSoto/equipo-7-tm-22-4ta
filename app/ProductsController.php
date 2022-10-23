@@ -16,8 +16,8 @@ if (isset($_POST['action'])) {
 				$brand_id = strip_tags($_POST['brand_id']);
 				$cover = $_FILES['cover']['tmp_name'];
 
-				$productController = new ProductsController();
-				$productController->createProduct($name,$slug,$description,$features,$brand_id, $cover);
+				$productsController = new ProductsController();
+				$productsController->createProduct($name,$slug,$description,$features,$brand_id, $cover);
 				
 			break; 
 
@@ -30,16 +30,16 @@ if (isset($_POST['action'])) {
 				$brand_id = strip_tags($_POST['brand_id']);
 				$id = strip_tags($_POST['id']);
 
-				$productController = new ProductsController();
-				$productController->updateProduct($name,$slug,$description,$features,$brand_id,$id);
+				$productsController = new ProductsController();
+				$productsController->updateProduct($name,$slug,$description,$features,$brand_id,$id);
 
 			break;
 
 			case 'delete':
 
-				$productController = new ProductsController();
+				$productsController = new ProductsController();
+				echo json_encode($productsController->remove($_POST['id']));
 
-				echo json_encode($productController->remove($_POST['id']));
 			break; 
 		}
 
@@ -80,12 +80,12 @@ Class ProductsController
 		}
 	}
 
-	public function getProduct($slug)
+	public function getProduct($id)
 	{
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-			CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products/slug/'.$slug,
+			CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products/slug/'.$id,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => '',
 			CURLOPT_MAXREDIRS => 10,

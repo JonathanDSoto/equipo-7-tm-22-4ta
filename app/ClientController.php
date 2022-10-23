@@ -50,8 +50,6 @@ if (isset($_POST['action'])) {
 
 Class ClientController(){
 
-
-    //Nivel id pendiente
     public function create($name, $email, $password, $phone_number, $is_suscribed, $level_id){
         $curl = curl_init();
 
@@ -69,7 +67,7 @@ Class ClientController(){
         'password' => $password,
         'phone_number' => $phone_number,
         'is_suscribed' => $is_suscribed,
-        'level_id' => '1'),
+        'level_id' => $level_id),
         CURLOPT_HTTPHEADER => array(
             'Authorization: Bearer '.$_SESSION['token']
         ),
@@ -113,8 +111,8 @@ Class ClientController(){
             '&password=' .$password.
             '&phone_number=' .$phone_number.
             '&is_suscribed=' .$is_suscribed.
-            '&level_id=1'
-            '&id=' .$id.,
+            '&level_id=' .$level_id.
+            '&id=' .$id,
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$_SESSION['token']
                 //Pendiente el codigo seguido de este comentario, idk
@@ -134,9 +132,9 @@ Class ClientController(){
         // }
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?sucess=true")
+            header("Location:".BASE_PATH."products/?success=true")
         }else {
-            header("Location:".BASE_PATH."products/?error=false")
+            header("Location:".BASE_PATH."products/?error=true")
         }
 
     }
@@ -210,11 +208,11 @@ Class ClientController(){
 		}
     }
 
-    public function getClient($slug){
+    public function getClient($id){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/clients/slug/'.$slug,
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/clients/'.$id,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
