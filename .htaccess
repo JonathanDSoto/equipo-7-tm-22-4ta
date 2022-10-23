@@ -3,6 +3,11 @@ RewriteEngine on
 
 #Rutas
 RewriteRule ^auth$ app/AuthController.php
+RewriteRule ^cliente$ app/ClientController.php
+RewriteRule ^coupon$ app/CouponController.php
+RewriteRule ^order$ app/OrderController.php
+RewriteRule ^product$ app/ProductsController.php
+RewriteRule ^user$ app/UserController.php
 
 #iniciarSesion
 RewriteRule ^iniciar-sesion/$ index.php
@@ -17,19 +22,19 @@ RewriteRule ^productos/$ products/index.php
 RewriteRule ^añadirProductos/$ products/add-products.php
 
 #detalleProducto
-RewriteRule ^detalle-producto/(.+)/$ products/details.php?slug=$1
+RewriteRule ^detalle-productos/(.+)/$ products/details.php?slug=$1
 
 #usuariosCliente
-RewriteRule ^perfil-cliente/$ users/cliente.php
+RewriteRule ^perfil-clientes/$ users/cliente.php
 
 #usuarios
-RewriteRule ^cliente/$ users/usuario.php
+RewriteRule ^clientes/$ users/usuario.php
 
 #catalogo
 RewriteRule ^catalogos/$ catalogos/catalogo.php
 
 #cupon
-RewriteRule ^cupone/$ cupones/cupon.php
+RewriteRule ^cupones/$ cupones/cupon.php
 
 #orden
 RewriteRule ^ordenes/$ ordenes/orden.php
