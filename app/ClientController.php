@@ -40,7 +40,7 @@ if (isset($_POST['action'])) {
                 $id = strip_tags($_POST['id']);
 
                 $clientcontroller = new ClientController();
-                $clientcontroller -> update($name, $email, $password, $phone_number, $is_suscribed, $level_id, $id)
+                $clientcontroller -> update($name, $email, $password, $phone_number, $is_suscribed, $level_id, $id);
             
                 break;
 		}
@@ -85,9 +85,9 @@ Class ClientController(){
         // }
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true")
+            header("Location:".BASE_PATH."products/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true")
+            header("Location:".BASE_PATH."products/?error=true");
         }
 
     }
@@ -132,9 +132,9 @@ Class ClientController(){
         // }
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true")
+            header("Location:".BASE_PATH."products/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true")
+            header("Location:".BASE_PATH."products/?error=true");
         }
 
     }

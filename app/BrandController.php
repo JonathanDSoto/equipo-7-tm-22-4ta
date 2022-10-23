@@ -131,9 +131,9 @@ Class BrandController{
 		echo $response;
 
 		if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?sucess=true")
+            header("Location:".BASE_PATH."products/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true")
+            header("Location:".BASE_PATH."products/?error=true");
         }
 
 	}
@@ -165,9 +165,9 @@ Class BrandController{
 		echo $response;
 
 		if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?sucess=true")
+            header("Location:".BASE_PATH."products/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true")
+            header("Location:".BASE_PATH."products/?error=true");
         }
 
 	}

@@ -149,9 +149,9 @@ Class UserController{
         echo $response;
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true")
+            header("Location:".BASE_PATH."products/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true")
+            header("Location:".BASE_PATH."products/?error=true");
         }
 
         //Rutas pendientes
@@ -227,9 +227,9 @@ Class UserController{
         echo $response;
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true")
+            header("Location:".BASE_PATH."products/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true")
+            header("Location:".BASE_PATH."products/?error=true");
         }
 
         //Rutas pendientes
