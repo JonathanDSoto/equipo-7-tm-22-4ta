@@ -75,9 +75,9 @@ Class OrderController(){
 
         //Rutas pendientes
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true")
+            header("Location:".BASE_PATH."products/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true")
+            header("Location:".BASE_PATH."products/?error=true");
         }
 
     }
@@ -109,9 +109,9 @@ Class OrderController(){
 
         //Rutas pendientes
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true")
+            header("Location:".BASE_PATH."products/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true")
+            header("Location:".BASE_PATH."products/?error=true");
         }
 
     }
