@@ -24,7 +24,7 @@
 						<span class="d-flex align-items-center">
 							<img class="rounded-circle header-profile-user" src="<?= BASE_PATH ?>public/images/users/avatar-1.jpg" alt="Header Avatar">
 							<span class="text-start ms-xl-2">
-								<span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Eridani Lucero</span>
+								<span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"><?= $_SESSION['name'] ?></span>
 								<span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">Administrador</span>
 							</span>
 						</span>
