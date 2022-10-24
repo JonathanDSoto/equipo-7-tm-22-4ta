@@ -24,8 +24,6 @@
     <link href="<?= BASE_PATH ?>public/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="<?= BASE_PATH ?>public/css/custom.min.css" rel="stylesheet" type="text/css" />
-    <!-- sweet alert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 </head>

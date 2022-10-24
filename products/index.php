@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <!-- end page title -->
-                    <a href ="<?= BASE_PATH ?>  añadirProductos" class="mb-3 btn btn-primary">Añadir Producto </a>
+                    <a href ="<?= BASE_PATH ?>añadirProductos/" class="mb-3 btn btn-primary">Añadir Producto </a>
                     <div class="row">                        
                         <?php  foreach ($productos as $arayP) {?>
                             <div class="col-md-3 p-2">
@@ -75,7 +75,6 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $arayP->name ?></h5>
                                         <p class="card-text"><?php echo $arayP->description ?></p>
-                                        <p class="card-text"><?php echo $arayP->cover ?></p>
                                         <p class="card-text">
                                             <?php
                                                 if (($arayP->brand) == null) {                                                
@@ -85,12 +84,11 @@
                                                 }            
                                                 // echo $arayP->brand->name;                             
                                             ?>     
-                                        </p>
-                                        <div class="row">
-                                            <a href="<?= BASE_PATH."detalle-productos/". $arayP->slug?>" class=" mt-1 btn btn-success">Ver Detalles</a> 
-                                            <a  onclick ="editProduct(this)"  data-product='<?php echo json_encode($arayP); ?>' data-bs-toggle="modal" data-bs-target="#editarproduct"  class="mt-1  btn btn-secondary">Editar</a>
-                                            <a onclick="remove(<?php echo $arayP->id ?>)" class="mt-1 btn btn-danger">Eliminar Producto</a>    
-                                        </div>                                                            
+                                        </p>                                        
+                                        <a href="<?= BASE_PATH."detalle-productos/". $arayP->slug?>" class=" mt-1 btn btn-success">Ver Detalles</a> 
+                                        <a  onclick ="editProduct(this)"  data-product='<?php echo json_encode($arayP); ?>' data-bs-toggle="modal" data-bs-target="#editarproduct"  class=" btn btn-secondary">Editar producto</a>
+                                        <a onclick="remove(<?php echo $arayP->id ?>)" class="mt-1 btn btn-danger">Eliminar Producto</a>    
+                                                                                                    
                                     </div>
                                 </div>
                             </div>
@@ -137,14 +135,15 @@
                                             <input type="file" name="cover" class="form-control" placeholder="cover" > 
                                         </div> 
                                     </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="id" id="id">
+                                        <input type="hidden" id="inputOculto"  name="action">
+                                        <input type="hidden" name="global_token" value="<?= $_SESSION['global_token'] ?>">
+                                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                    </div>
                                 </form>
                                 
-                                <div class="modal-footer">
-                                    <input type="hidden" name="id" id="id">
-                                    <input type="hidden" id="inputOculto"  name="action">
-                                    <input type="hidden" name="global_token" value="<?= $_SESSION['global_token'] ?>">
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -170,19 +169,34 @@
     <script src="../../../../unpkg.com/gridjs%405.1.0/plugins/selection/dist/selection.umd.js"></script>
     <!-- ecommerce product list -->
     <script src="<?= BASE_PATH ?>public/js/pages/ecommerce-product-list.init.js"></script>
+    <script src="<?= BASE_PATH ?>public/js/logout.js"></script>
 
     <script type="text/javascript">
+        function logout(email) {
+            var bodyFormData = new FormData();
+            bodyFormData.append('email', email);
+            bodyFormData.append('action', 'exit');
+            bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>');
+            console.log(email);
+            .then(function (response){
+                console.log('hola');
+                
+            })
+            .catch(function (error){
+                console.log('error');
+            })
+        }
         function remove(id) {
             swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this imaginary file!",
+                title: "¿Estas seguro?",
+                text: "una vez eliminado, no podras reecuperar el producto",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
             })
             .then((willDelete) => {
             if (willDelete) {
-                swal("Poof! Your imaginary file has been deleted!", {
+                swal("El producto fue elimidado con exito!", {
                     icon: "success",
                 });
                 var bodyFormData = new FormData();
@@ -202,7 +216,7 @@
                 
 
             } else {
-                swal("Your imaginary file is safe!");
+                swal("El producto no fue eliminado");
             }
             });  
         }

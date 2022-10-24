@@ -5,6 +5,8 @@
     <script src="<?= BASE_PATH ?>public/libs/feather-icons/feather.min.js"></script>
     <script src="<?= BASE_PATH ?>public/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="<?= BASE_PATH ?>public/js/plugins.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- App js -->
     <script src="<?= BASE_PATH ?>public/js/app.js"></script>

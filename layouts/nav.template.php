@@ -34,8 +34,12 @@
 						
 						<a class="dropdown-item" href="../users/usuario.php"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Perfil</span></a>
 						<div class="dropdown-divider"></div>
-						
-						<a class="dropdown-item" href="../logout.php"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Cerrar Sesión</span></a>
+						<form action="<?= BASE_PATH ?>auth" method="post">
+							<input type="hidden" name="action" value="exit"> 
+                            <input type="hidden" name="global_token" value="<?= $_SESSION['global_token'] ?>">
+                            <button  class="mdi mdi-logout text-muted fs-16 align-middle me-1" type="submit">Cerrar Sesión</button>
+						</form>
+						<!-- <a class="dropdown-item"  ><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Cerrar Sesión</span></a> -->
 					</div>
 				</div>
 			</div>
