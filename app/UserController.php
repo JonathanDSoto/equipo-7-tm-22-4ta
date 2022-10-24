@@ -25,7 +25,6 @@ if (isset($_POST['action'])) {
 			case 'delete':
 
                 // $id = strip_tags($_POST['id']);
-                
                 // $userController = new UserController();
                 // $userController->delete($id);
 
@@ -91,7 +90,7 @@ Class UserController{
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users/slug/'.$id,
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/users/'.$id,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,

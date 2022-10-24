@@ -46,10 +46,9 @@ if (isset($_POST['action'])) {
 	}
 }
 
-Class ProductsController
-{
-	public function getProducts()
-	{
+Class ProductsController{
+
+	public function getProducts(){
 
 		$curl = curl_init();
 
@@ -80,12 +79,11 @@ Class ProductsController
 		}
 	}
 
-	public function getProduct($id)
-	{
+	public function getProductBySlug($slug){
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-			CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products/slug/'.$id,
+			CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products/slug/'.$slug,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => '',
 			CURLOPT_MAXREDIRS => 10,
@@ -111,8 +109,39 @@ Class ProductsController
 		}
 	}
 
-	public function createProduct($name,$slug,$description,$features,$brand_id, $cover)
-	{
+	public function getProductById($id){
+
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products/'.$id,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'GET',
+		CURLOPT_HTTPHEADER => array(
+			'Authorization: Bearer '.$_SESSION['token']
+		),
+		));
+
+		$response = curl_exec($curl);
+		curl_close($curl);
+		echo $response;
+
+		if ( isset($response->code) && $response->code > 0) {
+			
+			return $response->data;
+		}else{
+
+			return array();
+		}
+
+	}
+
+	public function createProduct($name,$slug,$description,$features,$brand_id, $cover){
 
 		$curl = curl_init();
 
@@ -159,8 +188,7 @@ Class ProductsController
 
 	}
 
-	public function updateProduct($name,$slug,$description,$features,$brand_id,$id)
-	{
+	public function updateProduct($name,$slug,$description,$features,$brand_id,$id){
 
 		$curl = curl_init();
 
@@ -201,8 +229,7 @@ Class ProductsController
 
 	}
 
-	public function remove($id)
-	{
+	public function remove($id){
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(

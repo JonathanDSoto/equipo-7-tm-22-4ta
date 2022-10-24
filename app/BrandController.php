@@ -24,7 +24,6 @@ if (isset($_POST['action'])) {
 				$slug = strip_tags($_POST['slug']);
 				$id = strip_tags($_POST['id']);
 
-
 				$brandController = new BrandController();
                 $brandController -> update($name, $description, $slug, $id);
 
