@@ -70,19 +70,15 @@
                                                 </div>
                                             </div>
                                             <!--end col-->
-                                            
-                                            <!--end col-->
                                             <div class="col-xxl-2 col-sm-4">
                                                 <div>
-                                                    <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idStatus">
+                                                    <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idEstado">
                                                         <option value="">Estado</option>
-                                                        <option value="all" selected>Todo</option>
-                                                        <option value="Pending">Pending</option>
-                                                        <option value="Inprogress">Inprogress</option>
-                                                        <option value="Cancelled">Cancelled</option>
-                                                        <option value="Pickups">Pickups</option>
-                                                        <option value="Returns">Returns</option>
-                                                        <option value="Delivered">Delivered</option>
+                                                        <option value="Pending">Pendiente</option>
+                                                        <option value="Inprogress">En proceso</option>
+                                                        <option value="Cancelled">Cancelado</option>
+                                                        <option value="Returns">Devoluciones</option>
+                                                        <option value="Delivered">Entregado</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -91,11 +87,9 @@
                                                 <div>
                                                     <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idPayment">
                                                         <option value="">Forma de pago</option>
-                                                        <option value="all" selected>Todo</option>
-                                                        <option value="Mastercard">Mastercard</option>
+                                                        <option value="Mastercard"> Tarjeta Mastercard</option>
                                                         <option value="Paypal">Paypal</option>
                                                         <option value="Visa">Visa</option>
-                                                        <option value="COD">COD</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -110,27 +104,22 @@
                                         <ul class="nav nav-tabs nav-tabs-custom nav-success mb-3" role="tablist">
                                             <li class="nav-item">
                                                 <a class="nav-link active All py-3" data-bs-toggle="tab" id="All" href="#home1" role="tab" aria-selected="true">
-                                                    <i class="ri-store-2-fill me-1 align-bottom"></i> All Orders
+                                                    <i class="ri-store-2-fill me-1 align-bottom"></i> Todas las órdenes
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link py-3 Delivered" data-bs-toggle="tab" id="Delivered" href="#delivered" role="tab" aria-selected="false">
-                                                    <i class="ri-checkbox-circle-line me-1 align-bottom"></i> Delivered
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link py-3 Pickups" data-bs-toggle="tab" id="Pickups" href="#pickups" role="tab" aria-selected="false">
-                                                    <i class="ri-truck-line me-1 align-bottom"></i> Pickups <span class="badge bg-danger align-middle ms-1">2</span>
+                                                    <i class="ri-checkbox-circle-line me-1 align-bottom"></i> Entregado
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link py-3 Returns" data-bs-toggle="tab" id="Returns" href="#returns" role="tab" aria-selected="false">
-                                                    <i class="ri-arrow-left-right-fill me-1 align-bottom"></i> Returns
+                                                    <i class="ri-arrow-left-right-fill me-1 align-bottom"></i> Devoluciones
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link py-3 Cancelled" data-bs-toggle="tab" id="Cancelled" href="#cancelled" role="tab" aria-selected="false">
-                                                    <i class="ri-close-circle-line me-1 align-bottom"></i> Cancelled
+                                                    <i class="ri-close-circle-line me-1 align-bottom"></i> Cancelado
                                                 </a>
                                             </li>
                                         </ul>
@@ -144,14 +133,14 @@
                                                                 <input class="form-check-input" type="checkbox" id="checkAll" value="option">
                                                             </div>
                                                         </th>
-                                                        <th class="sort" data-sort="id">Order ID</th>
-                                                        <th class="sort" data-sort="customer_name">Customer</th>
-                                                        <th class="sort" data-sort="product_name">Product</th>
-                                                        <th class="sort" data-sort="date">Order Date</th>
-                                                        <th class="sort" data-sort="amount">Amount</th>
-                                                        <th class="sort" data-sort="payment">Payment Method</th>
-                                                        <th class="sort" data-sort="status">Delivery Status</th>
-                                                        <th class="sort" data-sort="city">Action</th>
+                                                        <th class="sort" data-sort="id">ID</th>
+                                                        <th class="sort" data-sort="customer_name">Cliente</th>
+                                                        <th class="sort" data-sort="product_name">Producto</th>
+                                                        <th class="sort" data-sort="date">Fecha de Orden</th>
+                                                        <th class="sort" data-sort="amount">Monto</th>
+                                                        <th class="sort" data-sort="payment">Método de Pago</th>
+                                                        <th class="sort" data-sort="status">Estado de entrega</th>
+                                                        <th class="sort" data-sort="city">Acción</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="list form-check-all">
@@ -161,13 +150,13 @@
                                                                 <input class="form-check-input" type="checkbox" name="checkAll" value="option1">
                                                             </div>
                                                         </th>
-                                                        <td class="id"><a href="apps-ecommerce-order-details.html" class="fw-medium link-primary">#VZ2101</a></td>
+                                                        <td class="id"><a href="#" class="fw-medium link-primary">#VZ2101</a></td>
                                                         <td class="customer_name">Frank Hook</td>
                                                         <td class="product_name">Puma Tshirt</td>
                                                         <td class="date">20 Dec, 2021, <small class="text-muted">02:21 AM</small></td>
                                                         <td class="amount">$654</td>
                                                         <td class="payment">Mastercard</td>
-                                                        <td class="status"><span class="badge badge-soft-warning text-uppercase">Pending</span>
+                                                        <td class="status"><span class="badge badge-soft-warning text-uppercase">Pendiente</span>
                                                         </td>
                                                         <td>
                                                             <ul class="list-inline hstack gap-2 mb-0">
@@ -191,22 +180,15 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <div class="noresult" style="display: none">
-                                                <div class="text-center">
-                                                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#405189,secondary:#0ab39c" style="width:75px;height:75px"></lord-icon>
-                                                    <h5 class="mt-2">Sorry! No Result Found</h5>
-                                                    <p class="text-muted">We've searched more than 150+ Orders We did not find any orders for you search.</p>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="d-flex justify-content-end">
                                             <div class="pagination-wrap hstack gap-2">
                                                 <a class="page-item pagination-prev disabled" href="#">
-                                                    Previous
+                                                    Anterior
                                                 </a>
                                                 <ul class="pagination listjs-pagination mb-0"></ul>
                                                 <a class="page-item pagination-next" href="#">
-                                                    Next
+                                                    Siguiente
                                                 </a>
                                             </div>
                                         </div>
