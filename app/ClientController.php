@@ -29,7 +29,7 @@ if (isset($_POST['action'])) {
                 echo json_encode($clientcontroller->delete($_POST['id']));
 
 				break;
-            case 'update'
+            case 'update':
 
                 $name = strip_tags($_POST['name']);
                 $email = strip_tags($_POST['email']);
@@ -92,7 +92,6 @@ Class ClientController(){
 
     }
 
-    //El nivel de id queda pendiente
     public function update($name, $email, $password, $phone_number, $is_suscribed, $level_id, $id){
 
         $curl = curl_init();
@@ -157,7 +156,6 @@ Class ClientController(){
         ));
 
         $response = curl_exec($curl);
-
         curl_close($curl);
         echo $response;
 

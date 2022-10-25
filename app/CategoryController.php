@@ -36,7 +36,7 @@ if (isset($_POST['action'])) {
 			case 'delete':
 
 				$categoryController = new CategoryController();
-				echo json_encode($categoryController->remove($_POST['id']));
+				echo json_encode($categoryController->delete($_POST['id']));
 
 			break; 
 		}
