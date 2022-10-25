@@ -45,7 +45,7 @@ if (isset($_POST['action'])) {
 			
 
 				break;
-            case 'delete'
+            case 'delete':
 
                 $couponController  = new CouponController();
                 echo json_encode($couponController->delete($_POST['id']));

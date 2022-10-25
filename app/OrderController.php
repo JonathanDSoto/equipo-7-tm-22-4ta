@@ -31,7 +31,7 @@ if (isset($_POST['action'])) {
                 $orderController -> update($id, $order_status_id);
 
 				break;
-            case 'delete'
+            case 'delete':
 
                 $orderController = new OrderController();
                 echo json_encode($orderController->delete($_POST['id']));
@@ -206,7 +206,6 @@ Class OrderController(){
         $response = curl_exec($curl);
         curl_close($curl);
         echo $response;
-
         
         if ( isset($response->code) && $response->code > 0) {
 			
@@ -217,6 +216,37 @@ Class OrderController(){
 		}
     }
 
+    //Pendiente URL
+    public function getOrderByDate($start_date, $end_date){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/'.$start_date. $end_date,
+        // CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/2022-10-04/2022-10-25',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+            'Authorization: Bearer '.$_SESSION['token']
+        ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        echo $response;
+
+        if ( isset($response->code) && $response->code > 0) {
+			
+			return $response->data;
+		}else{
+
+			return array();
+		}
+    }
     
 }
 

@@ -157,7 +157,7 @@ Class CategoryController(){
         '&name=' .$name.
         '&description=' .$description.
         '&slug=' .$slug.
-        '&category_id=' .$id,
+        '&category_id=' .$category_id,
         CURLOPT_HTTPHEADER => array(
             'Authorization: Bearer '.$_SESSION['token'],
             'Content-Type: application/x-www-form-urlencoded'
