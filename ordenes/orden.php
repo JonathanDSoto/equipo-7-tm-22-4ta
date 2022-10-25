@@ -88,6 +88,7 @@
                                                     <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idPayment">
                                                         <option value="">Forma de pago</option>
                                                         <option value="Mastercard"> Tarjeta Mastercard</option>
+                                                        <option value="Visa">Tarjeta de Débito</option>
                                                         <option value="Paypal">Paypal</option>
                                                         <option value="Visa">Visa</option>
                                                     </select>
