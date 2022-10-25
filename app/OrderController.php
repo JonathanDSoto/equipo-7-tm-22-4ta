@@ -221,7 +221,7 @@ Class OrderController(){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/'.$start_date. $end_date,
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/'. $start_date . $end_date,
         // CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/2022-10-04/2022-10-25',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
