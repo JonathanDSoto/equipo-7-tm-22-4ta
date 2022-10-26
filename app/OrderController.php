@@ -97,7 +97,7 @@ Class OrderController{
         CURLOPT_POSTFIELDS => 'id=' .$id. 
         '&order_status_id=' .$order_status_id ,
         CURLOPT_HTTPHEADER => array(
-            'Authorization: Bearer '.$_SESSION['token']
+            'Authorization: Bearer '.$_SESSION['token'],
             //Pendiente linea siguienete
             'Content-Type: application/x-www-form-urlencoded'
         ),

@@ -113,7 +113,7 @@ Class ClientController{
             '&level_id=' .$level_id.
             '&id=' .$id,
             CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer '.$_SESSION['token']
+                'Authorization: Bearer '.$_SESSION['token'],
                 //Pendiente el codigo seguido de este comentario, idk
                 'Content-Type: application/x-www-form-urlencoded'
             ),

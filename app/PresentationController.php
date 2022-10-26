@@ -130,7 +130,7 @@
             '&id=' .$id.
             '&amount=' .$amount,
             CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer '.$_SESSION['token']
+                'Authorization: Bearer '.$_SESSION['token'],
                 //Pendiente linea siguienete
                 'Content-Type: application/x-www-form-urlencoded'
             ),
@@ -164,7 +164,7 @@
             CURLOPT_POSTFIELDS => 'id=' .$id.
             '&amount=' .$amount,
             CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer '.$_SESSION['token']
+                'Authorization: Bearer '.$_SESSION['token'],
                 //Pendiente linea siguienete
                 'Content-Type: application/x-www-form-urlencoded'
             ),

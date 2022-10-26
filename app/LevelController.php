@@ -87,7 +87,7 @@
             '&name=' .$name.
             '&percentage_discount=' .$percentage_discount ,
             CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer '.$_SESSION['token']
+                'Authorization: Bearer '.$_SESSION['token'],
                 //Pendiente linea siguienete
                 'Content-Type: application/x-www-form-urlencoded'
             ),
