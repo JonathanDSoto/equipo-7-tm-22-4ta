@@ -53,8 +53,6 @@
         }
     }
 
-
-
     Class AddressController(){
 
         public function create($first_name, $last_name, $street_and_use_number, $postal_code, $city, $province, $phone_number, $is_billing_address, $client_id){

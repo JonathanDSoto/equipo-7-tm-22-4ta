@@ -42,7 +42,7 @@ if (isset($_POST['action'])) {
 	}
 }
 
-Class OrderController(){
+Class OrderController{
 
     public function create($folio, $total, $is_paid, $client_id, $address_id, $order_status_id, $payment_type_id, $coupon_id){
         $curl = curl_init();
