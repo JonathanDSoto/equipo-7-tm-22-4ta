@@ -63,7 +63,7 @@ Class OrderController{
         'address_id' => $address_id,
         'order_status_id' => $order_status_id,
         'payment_type_id' => $payment_type_id,
-        'coupon_id' => $coupon_id,
+        'coupon_id' => $coupon_id),
         CURLOPT_HTTPHEADER => array(
             'Authorization: Bearer '.$_SESSION['token']
         ),
