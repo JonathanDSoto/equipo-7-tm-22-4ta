@@ -105,13 +105,13 @@ Class OrderController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         //Rutas pendientes
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true");
+            header("Location:".BASE_PATH."order/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true");
+            header("Location:".BASE_PATH."order/?error=true");
         }
 
     }
@@ -135,7 +135,7 @@ Class OrderController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         if ( isset($response->code) && $response->code > 0) {
 			
@@ -174,7 +174,7 @@ Class OrderController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+        $response = json_decode($response);
         
         if ( isset($response->code) && $response->code > 0) {
 			
@@ -205,7 +205,7 @@ Class OrderController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+        $response = json_decode($response);
         
         if ( isset($response->code) && $response->code > 0) {
 			
@@ -221,7 +221,7 @@ Class OrderController{
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/'. $start_date . $end_date,
+        CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/'. $start_date. '/' . $end_date,
         // CURLOPT_URL => 'https://crud.jonathansoto.mx/api/orders/2022-10-04/2022-10-25',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
@@ -237,8 +237,8 @@ Class OrderController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
-
+        $response = json_decode($response);
+        
         if ( isset($response->code) && $response->code > 0) {
 			
 			return $response->data;

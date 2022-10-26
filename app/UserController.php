@@ -74,7 +74,7 @@ Class UserController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
         
         if ( isset($response->code) && $response->code > 0) {
 			
@@ -105,7 +105,7 @@ Class UserController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
         
         if ( isset($response->code) && $response->code > 0) {
 			
@@ -145,12 +145,12 @@ Class UserController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true");
+            header("Location:".BASE_PATH."user/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true");
+            header("Location:".BASE_PATH."user/?error=true");
         }
 
         //Rutas pendientes
@@ -180,7 +180,7 @@ Class UserController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         if(isset($response->code) && $response->code >0 ){
             return true;
@@ -223,12 +223,12 @@ Class UserController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true");
+            header("Location:".BASE_PATH."user/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true");
+            header("Location:".BASE_PATH."user/?error=true");
         }
 
         //Rutas pendientes
@@ -261,12 +261,12 @@ Class UserController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true");
+            header("Location:".BASE_PATH."user/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true");
+            header("Location:".BASE_PATH."user/?error=true");
         }
     }
 

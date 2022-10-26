@@ -84,13 +84,13 @@
 
             $response = curl_exec($curl);
             curl_close($curl);
-            echo $response;
+            $response = json_decode($response);
 
             //Rutas pendientes
             if(isset($response->code) && $response->code >0 ){
-                header("Location:".BASE_PATH."products/?success=true");
+                header("Location:".BASE_PATH."address/?success=true");
             }else {
-                header("Location:".BASE_PATH."products/?error=true");
+                header("Location:".BASE_PATH."address/?error=true");
             }
 
         }
@@ -126,13 +126,13 @@
 
             $response = curl_exec($curl);
             curl_close($curl);
-            echo $response;
+            $response = json_decode($response);
 
             //Rutas pendientes
             if(isset($response->code) && $response->code >0 ){
-                header("Location:".BASE_PATH."products/?success=true");
+                header("Location:".BASE_PATH."address/?success=true");
             }else {
-                header("Location:".BASE_PATH."products/?error=true");
+                header("Location:".BASE_PATH."address/?error=true");
             }
 
         }
@@ -156,7 +156,7 @@
 
             $response = curl_exec($curl);
             curl_close($curl);
-            echo $response;
+            $response = json_decode($response);
 
             if ( isset($response->code) && $response->code > 0) {
 			
@@ -187,7 +187,7 @@
 
             $response = curl_exec($curl);
             curl_close($curl);
-            echo $response;
+            $response = json_decode($response);
 
             if ( isset($response->code) && $response->code > 0) {
 			

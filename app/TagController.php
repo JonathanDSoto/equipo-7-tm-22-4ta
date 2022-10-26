@@ -60,7 +60,7 @@ Class TagController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         if ( isset($response->code) && $response->code > 0) {
 			
@@ -91,7 +91,7 @@ Class TagController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         if ( isset($response->code) && $response->code > 0) {
 			
@@ -125,12 +125,12 @@ Class TagController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true");
+            header("Location:".BASE_PATH."tag/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true");
+            header("Location:".BASE_PATH."tag/?error=true");
         }
 
     }
@@ -160,12 +160,12 @@ Class TagController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true");
+            header("Location:".BASE_PATH."tag/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true");
+            header("Location:".BASE_PATH."tag/?error=true");
         }
 
     }
@@ -190,7 +190,7 @@ Class TagController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         if ( isset($response->code) && $response->code > 0) {
 			

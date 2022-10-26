@@ -75,7 +75,7 @@ Class ClientController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         //Rutas pendientes
         // if(isset($response->code) && $response->code >0 ){
@@ -85,9 +85,9 @@ Class ClientController{
         // }
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true");
+            header("Location:".BASE_PATH."client/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true");
+            header("Location:".BASE_PATH."client/?error=true");
         }
 
     }
@@ -121,7 +121,7 @@ Class ClientController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+        $response = json_decode($response);
 
         //Rutas pendientes
         // if(isset($response->code) && $response->code >0 ){
@@ -131,9 +131,9 @@ Class ClientController{
         // }
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."products/?success=true");
+            header("Location:".BASE_PATH."client/?success=true");
         }else {
-            header("Location:".BASE_PATH."products/?error=true");
+            header("Location:".BASE_PATH."client/?error=true");
         }
 
     }
@@ -157,7 +157,7 @@ Class ClientController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
 
         //Rutas pendientes
         // if(isset($response->code) && $response->code >0 ){
@@ -195,7 +195,7 @@ Class ClientController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
         
         if ( isset($response->code) && $response->code > 0) {
 			
@@ -225,7 +225,7 @@ Class ClientController{
 
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+		$response = json_decode($response);
         
         if ( isset($response->code) && $response->code > 0) {
 			
