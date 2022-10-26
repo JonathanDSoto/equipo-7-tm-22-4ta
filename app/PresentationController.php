@@ -3,7 +3,7 @@
     include_once 'config.php';
 
 
-    Class PresentationController(){
+    Class PresentationController{
 
         public function getPresentations($id){
             $curl = curl_init();

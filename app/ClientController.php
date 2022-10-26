@@ -1,4 +1,4 @@
-<??
+<?php
 
 include_once "config.php";
 
@@ -48,7 +48,7 @@ if (isset($_POST['action'])) {
 	}
 }
 
-Class ClientController(){
+Class ClientController{
 
     public function create($name, $email, $password, $phone_number, $is_suscribed, $level_id){
         $curl = curl_init();

@@ -45,7 +45,7 @@ if (isset($_POST['action'])) {
 }
 
 
-Class CategoryController(){
+Class CategoryController{
 
     public function getCategory($id){
         $curl = curl_init();

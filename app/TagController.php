@@ -39,7 +39,7 @@ if (isset($_POST['action'])) {
 	}
 }
 
-Class TagController(){
+Class TagController{
 
     public function getTag($id){
         $curl = curl_init();

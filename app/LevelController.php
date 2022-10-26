@@ -37,7 +37,7 @@
         }
     }
 
-    Class LevelController(){
+    Class LevelController{
         
         public function create($name, $percentage_discount){
             $curl = curl_init();

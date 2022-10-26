@@ -60,7 +60,7 @@ if (isset($_POST['action'])) {
 	}
 }
 
-Class CouponController(){
+Class CouponController{
 
     public function create($name, $code, $percentage_discount, $min_amount_required, $min_product_required, $start_date, $end_date, $max_uses, $count_uses, $valid_only_first_purchase, $status){
         $curl = curl_init();
