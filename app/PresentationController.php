@@ -2,6 +2,60 @@
 
     include_once 'config.php';
 
+    if (isset($_POST['action'])) {
+
+        if ( isset($_POST['global_token']) && 
+            $_POST['global_token'] == $_SESSION['global_token']) {
+    
+            switch ($_POST['action']) {
+                case 'create':
+                    
+                    $description = strip_tags($_POST['description']);
+                    $code = strip_tags($_POST['code']);
+                    $weight_in_grams = strip_tags($_POST['weight_in_grams']);
+                    $status = strip_tags($_POST['status']);
+                    $cover = strip_tags($_POST['cover']);
+                    $stock = strip_tags($_POST['stocks']);
+                    $stock_min = strip_tags($_POST['stock_min']);
+                    $stock_max = strip_tags($_POST['stock_max']);
+                    $product_id = strip_tags($_POST['product_id']);
+                    $amount = strip_tags($_POST['amount']);
+
+                    $presentationController = new PresentationController();
+                    $presentationController->create($description, $code, $weight_in_grams, $status, $cover, $stock, $stock_min, $stock_max, $product_id, $amount);
+                    
+                break; 
+    
+                case 'update':
+                    
+                    $description = strip_tags($_POST['description']);
+                    $code = strip_tags($_POST['code']);
+                    $weight_in_grams = strip_tags($_POST['weight_in_grams']);
+                    $status = strip_tags($_POST['status']);
+                    $cover = strip_tags($_POST['cover']);
+                    $stock = strip_tags($_POST['stocks']);
+                    $stock_min = strip_tags($_POST['stock_min']);
+                    $stock_max = strip_tags($_POST['stock_max']);
+                    $product_id = strip_tags($_POST['product_id']);
+                    $id = strip_tags($_POST['id']);
+                    $amount = strip_tags($_POST['amount']);
+
+                    $presentationController = new PresentationController();
+                    $presentationController->update($description, $code, $weight_in_grams, $status, $cover, $stock, $stock_min, $stock_max, $product_id, $id, $amount);
+    
+                break;
+    
+                case 'delete':
+
+                    $presentationController = new PresentationController();
+                    echo json_encode($presentationController->delete($_POST['id']));
+    
+                break; 
+            }
+    
+        }
+    }
+
 
     Class PresentationController{
 
@@ -24,7 +78,7 @@
 
             $response = curl_exec($curl);
             curl_close($curl);
-            echo $response;
+            $response = json_decode($response);
 
             if ( isset($response->code) && $response->code > 0) {
 			
@@ -55,7 +109,7 @@
 
             $response = curl_exec($curl);
             curl_close($curl);
-            echo $response;
+            $response = json_decode($response);
 
             if ( isset($response->code) && $response->code > 0) {
 			
@@ -96,13 +150,12 @@
 
             $response = curl_exec($curl);
             curl_close($curl);
-            echo $response;
+            $response = json_decode($response);
 
-            //Rutas pendientes
             if(isset($response->code) && $response->code >0 ){
-                header("Location:".BASE_PATH."products/?success=true");
+                header("Location:".BASE_PATH."presentation/?success=true");
             }else {
-                header("Location:".BASE_PATH."products/?error=true");
+                header("Location:".BASE_PATH."presentation/?error=true");
             }
 
         }
@@ -128,23 +181,22 @@
             '&stock_max=' .$stock_max.
             '&product_id=' .$product_id.
             '&id=' .$id.
-            '&amount=' .$amount,
+            '&amount=' .$amount,)
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$_SESSION['token'],
-                //Pendiente linea siguienete
                 'Content-Type: application/x-www-form-urlencoded'
             ),
             ));
 
             $response = curl_exec($curl);
             curl_close($curl);
-            echo $response;
+            $response = json_decode($response);
 
             //Rutas pendientes
             if(isset($response->code) && $response->code >0 ){
-                header("Location:".BASE_PATH."products/?success=true");
+                header("Location:".BASE_PATH."presentation/?success=true");
             }else {
-                header("Location:".BASE_PATH."products/?error=true");
+                header("Location:".BASE_PATH."presentation/?error=true");
             }
 
         }
@@ -162,23 +214,22 @@
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'PUT',
             CURLOPT_POSTFIELDS => 'id=' .$id.
-            '&amount=' .$amount,
+            '&amount=' .$amount,)
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$_SESSION['token'],
-                //Pendiente linea siguienete
                 'Content-Type: application/x-www-form-urlencoded'
             ),
             ));
 
             $response = curl_exec($curl);
             curl_close($curl);
-            echo $response;
+            $response = json_decode($response);
 
             //Rutas pendientes
             if(isset($response->code) && $response->code >0 ){
-                header("Location:".BASE_PATH."products/?success=true");
+                header("Location:".BASE_PATH."presentation/?success=true");
             }else {
-                header("Location:".BASE_PATH."products/?error=true");
+                header("Location:".BASE_PATH."presentation/?error=true");
             }
 
         }
@@ -202,9 +253,8 @@
             ));
 
             $response = curl_exec($curl);
-
             curl_close($curl);
-            echo $response;
+            $response = json_decode($response);
 
         }
     }
