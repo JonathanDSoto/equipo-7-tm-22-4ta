@@ -29,7 +29,7 @@ RewriteRule ^detalle-productos/(.+)/$ products/details.php?slug=$1
 RewriteRule ^perfil-clientes/$ users/cliente.php
 
 #usuarios
-RewriteRule ^clientes/$ users/usuario.php
+RewriteRule ^usuario/$ users/usuario.php
 
 #catalogo
 RewriteRule ^catalogos/$ catalogos/catalogo.php
