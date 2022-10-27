@@ -84,10 +84,12 @@
                                                 }            
                                                 // echo $arayP->brand->name;                             
                                             ?>     
-                                        </p>                                        
-                                        <a href="<?= BASE_PATH."detalle-productos/". $arayP->slug?>" class=" mt-1 btn btn-success">Ver Detalles</a> 
-                                        <a  onclick ="editProduct(this)"  data-product='<?php echo json_encode($arayP); ?>' data-bs-toggle="modal" data-bs-target="#editarproduct"  class=" btn btn-secondary">Editar producto</a>
-                                        <a onclick="remove(<?php echo $arayP->id ?>)" class="mt-1 btn btn-danger">Eliminar Producto</a>    
+                                        </p>  
+                                        <div class="row">
+                                            <a href="<?= BASE_PATH."detalle-productos/". $arayP->slug?>" class=" mt-1 btn btn-success col-6">Ver Detalles</a> 
+                                            <a  onclick ="editProduct(this)"  data-product='<?php echo json_encode($arayP); ?>' data-bs-toggle="modal" data-bs-target="#editarproduct"  class="mt-1 btn btn-secondary col-6">Editar </a>
+                                        </div>                                       
+                                        <a onclick="remove(<?php echo $arayP->id ?>)" class="mt-1 btn btn-danger col-12">Eliminar Producto</a>    
                                                                                                     
                                     </div>
                                 </div>

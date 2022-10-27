@@ -1,5 +1,12 @@
 <?php 
-    include "../app/config.php";
+        include "../app/ProductsController.php";
+        include "../app/BrandController.php";
+    
+        $productController = new ProductsController();
+        $productos = $productController->getProducts();
+    
+        $brandController = new BrandController();	
+        $brands = $brandController->getBrands();
 ?>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -48,93 +55,44 @@
                     </div>
                     <!-- end page title -->
 
-                    <form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
-                        <div class="row">
-                            <div class="col-lg-6"> 
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title mb-0">Añadir Producto</h5>
+                    <form  action="<?= BASE_PATH ?>product" method="post" enctype="multipart/form-data"">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <span class="col-form-label" id="basic-addon1">name</span> 
+                                            <input type="text" id="name" name="name" class="form-control" placeholder="name" aria-label="name" aria-describedby="basic-addon1"> 
+                                        </div>
+                                        <div class="input mb-3">
+                                            <span class="col-form-label" id="basic-addon1">slug</span> 
+                                            <input type="text" id="slug" name="slug" class="form-control" placeholder="slug" aria-label="slug" aria-describedby="basic-addon1"> 
+                                        </div>
+                                        <div class="input mb-3">
+                                            <span class="col-form-label"id="basic-addon1">description</span> 
+                                            <input type="text" id="description" name="description" class="form-control" placeholder="description" aria-label="description" aria-describedby="basic-addon1"> 
+                                        </div>
+                                        <div class="input mb-3">
+                                            <span class="col-form-label" id="basic-addon1">features</span>    
+                                            <input type="text" id="features" name="features" class="form-control" placeholder="features" aria-label="features" aria-describedby="basic-addon1"> 
+                                        </div>                                    
+                                        <div class="mb-3">
+                                            <label class="col-form-label" for="product-title-input">Marcas de Producto</label>
+                                            <a href="#" class="float-end text-decoration-underline">Agregar nuevo</a>                                            
+                                            <select name="brand_id" id="brand_id" class="form-select" placeholder="marca...">
+                                                <?php foreach($brands as $arrayBrand){ ?>
+                                                    <option value="<?php echo $arrayBrand ->id ?>"> <?php echo $arrayBrand->name ?> </option>
+                                                <?php }?>
+                                            </select> 
+                                        </div> 
+                                        <div class="input-group mb-3">
+                                            <input type="file" name="cover" class="form-control" placeholder="cover" > 
+                                        </div> 
                                     </div>
-                                    <div class="card-body">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="product-title-input">Titulo del producto</label>
-                                            <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
-                                            <input type="text" class="form-control d-none" id="product-id-input">
-                                            <input type="text" class="form-control" id="product-title-input" value="" placeholder="Ingrese el titulo del producto" required>
-                                            <div class="invalid-feedback">Ingrese un título de producto.</div>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="form-label" for="product-title-input">Descripción general del producto</label>
-                                            <textarea class="form-control" placeholder="Debe ingresar un mínimo de 100 caracteres" rows="3"></textarea>
-                                        </div>
-                                        
-                                        <div class="mb-3">
-                                            <label class="form-label" for="product-title-input">Categorías de Producto</label>
-                                            <a href="#" class="float-end text-decoration-underline">Agregar nuevo</a>
-                                            
-                                            <select class="form-select" id="choices-category-input" name="choices-category-input" data-choices data-choices-search-false>
-                                                <option value="Appliances">Accesorios</option>
-                                                <option value="Automotive Accessories">Accesorios automotrices</option>
-                                                <option value="Electronics">Electrónica</option>
-                                                <option value="Fashion">Moda</option>
-                                                <option value="Furniture">Muebles</option>
-                                                <option value="Grocery">Comestibles</option>
-                                                <option value="Kids">Niños</option>
-                                                <option value="Watches">Relojes</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="product-title-input">Etiquetas de productos</label>                                            
-                                            <div class="hstack gap-3 align-items-start">
-                                                <div class="flex-grow-1">
-                                                    <input class="form-control" data-choices data-choices-multiple-remove="true" placeholder="Ingrese una etiqueta" type="text" value="Cotton"/>
-                                                </div>
-                                            </div>
-                                        
-                                        
-                                        </div>
-
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="id" id="id">
+                                        <input type="hidden" id="inputOculto" value="create" name="action">
+                                        <input type="hidden" name="global_token" value="<?= $_SESSION['global_token'] ?>">
+                                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- end col -->
-                            <div class="col-lg-6"> 
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title mb-0">Detalles del Producto</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="product-title-input">Características principales</label>
-                                            <textarea class="form-control" placeholder="Debe ingresar un mínimo de 100 caracteres" rows="3"></textarea>
-                                        </div>
-                                        
-                                        <div class="mb-3">
-                                            <label class="form-label" for="product-title-input">Marca del producto</label>                                            
-                                            <div class="hstack gap-3 align-items-start">
-                                                <div class="flex-grow-1">
-                                                    <input class="form-control" data-choices data-choices-multiple-remove="true" placeholder="Ingrese una marca" type="text" value="Cotton"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="mb-3">
-                                            <label class="form-label" for="product-title-input">Palabra clave del producto</label>
-                                            <input type="hidden" class="form-control" id="formAction" name="formAction" value="add">
-                                            <input type="text" class="form-control d-none" id="product-id-input">
-                                            <input type="text" class="form-control" id="product-title-input" value="" placeholder="Ingrese el titulo del producto" required>
-                                            <div class="invalid-feedback">Ingrese la palabra del producto.</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-end mb-3">
-                                        <button type="submit" class="btn btn-success w-lg">Enviar</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end row -->
-                    </form>
+                                </form>
                 </div>
                 <!-- container-fluid -->
                 

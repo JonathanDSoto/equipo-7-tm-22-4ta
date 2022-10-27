@@ -22,38 +22,38 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="../users/usuario.php">
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>clientes/">
                                 <i class="ri-group-line"></i> <span data-key="t-widgets">Usuarios</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="../users/cliente.php">
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>perfil-clientes/">
                                 <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Clientes</span>
                             </a>
                             
                         </li> 
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="index.php">
-                                <i class=" ri-shopping-basket-2-line"></i> <span data-key="t-widgets">Productos</span>
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>productos/"> 
+                                <i  class=" ri-shopping-basket-2-line"></i> <span data-key="t-widgets">Productos</span>
                             </a>
                         </li> 
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="../catalogo.php">
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>catalogos/">
                                 <i class="bx bx-book-open"></i> <span data-key="t-maps">Catálogos</span>
                             </a>
                         </li>
  
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="../cupon.php">
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>cupones/">
                                 <i class=" ri-price-tag-3-line"></i> <span data-key="t-maps">Cupones</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="../orden.php">
+                            <a class="nav-link" href="<?= BASE_PATH ?>ordenes/">
                                 <i class="ri-newspaper-line"></i> <span data-key="t-maps">Ordenes</span>
                             </a>
 

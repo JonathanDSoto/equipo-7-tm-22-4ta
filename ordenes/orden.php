@@ -1,5 +1,11 @@
 <?php 
-    include "../app/config.php";
+    // include "../app/config.php";
+    include "../app/OrderController.php";
+
+    $ordercontroller = new OrderController();
+    $ordenes = $ordercontroller->getOrders();
+
+
 ?> 
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -37,7 +43,7 @@
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Productos</a></li>
+                                        <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>productos/">Productos</a></li>
                                         <li class="breadcrumb-item active">Ordenes</li>
                                     </ol>
                                 </div>
@@ -134,7 +140,7 @@
                                                                 <input class="form-check-input" type="checkbox" id="checkAll" value="option">
                                                             </div>
                                                         </th>
-                                                        <th class="sort" data-sort="id">ID</th>
+                                                        <th class="sort" data-sort="id">FOLIO</th>
                                                         <th class="sort" data-sort="customer_name">Cliente</th>
                                                         <th class="sort" data-sort="product_name">Producto</th>
                                                         <th class="sort" data-sort="date">Fecha de Orden</th>
@@ -145,40 +151,50 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="list form-check-all">
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" name="checkAll" value="option1">
-                                                            </div>
-                                                        </th>
-                                                        <td class="id"><a href="#" class="fw-medium link-primary">#VZ2101</a></td>
-                                                        <td class="customer_name">Frank Hook</td>
-                                                        <td class="product_name">Puma Tshirt</td>
-                                                        <td class="date">20 Dec, 2021, <small class="text-muted">02:21 AM</small></td>
-                                                        <td class="amount">$654</td>
-                                                        <td class="payment">Mastercard</td>
-                                                        <td class="status"><span class="badge badge-soft-warning text-uppercase">Pendiente</span>
-                                                        </td>
-                                                        <td>
-                                                            <ul class="list-inline hstack gap-2 mb-0">
-                                                                <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ver">
-                                                                    <a href="apps-ecommerce-order-details.html" class="text-primary d-inline-block">
-                                                                        <i class="ri-eye-fill fs-16"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Editar">
-                                                                    <a href="#showModal" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">
-                                                                        <i class="ri-pencil-fill fs-16"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Eliminar">
-                                                                    <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" href="#deleteOrder">
-                                                                        <i class="ri-delete-bin-5-fill fs-16"></i>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </td>
-                                                    </tr>
+                                                    <?php  foreach ($ordenes as $arayP) {?>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" name="checkAll" value="option1">
+                                                                </div>
+                                                            </th>
+                                                            <td class="id"><a href="#" class="fw-medium link-primary"> <?= $arayP->folio ?> </a></td>
+                                                            <td class="customer_name">
+                                                            <?php
+                                                                if (($arayP->client) == null) {                                                
+                                                                    echo "Sin nombre";
+                                                                } else {
+                                                                    echo $arayP->client->name;
+                                                                }            
+                                                                // echo $arayP->brand->name;                             
+                                                            ?></td>
+                                                            <td class="product_name"><?= $arayP->presentations->description ?></td>
+                                                            <td class="date">bla<</td>
+                                                            <td class="amount">$654</td>
+                                                            <td class="payment">Mastercard</td>
+                                                            <td class="status"><span class="badge badge-soft-warning text-uppercase">Pendiente</span>
+                                                            </td>
+                                                            <td>
+                                                                <ul class="list-inline hstack gap-2 mb-0">
+                                                                    <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ver">
+                                                                        <a href="apps-ecommerce-order-details.html" class="text-primary d-inline-block">
+                                                                            <i class="ri-eye-fill fs-16"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Editar">
+                                                                        <a href="#showModal" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">
+                                                                            <i class="ri-pencil-fill fs-16"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Eliminar">
+                                                                        <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" href="#deleteOrder">
+                                                                            <i class="ri-delete-bin-5-fill fs-16"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    <?php }?>
                                                 </tbody>
                                             </table>
                                         </div>
