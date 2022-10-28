@@ -181,7 +181,7 @@
             '&stock_max=' .$stock_max.
             '&product_id=' .$product_id.
             '&id=' .$id.
-            '&amount=' .$amount,)
+            '&amount=' .$amount,
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$_SESSION['token'],
                 'Content-Type: application/x-www-form-urlencoded'
@@ -214,7 +214,7 @@
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'PUT',
             CURLOPT_POSTFIELDS => 'id=' .$id.
-            '&amount=' .$amount,)
+            '&amount=' .$amount,
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$_SESSION['token'],
                 'Content-Type: application/x-www-form-urlencoded'
