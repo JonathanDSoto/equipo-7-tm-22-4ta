@@ -25,11 +25,11 @@ RewriteRule ^añadirProductos/$ products/add-products.php
 #detalleProducto
 RewriteRule ^detalle-productos/(.+)/$ products/details.php?slug=$1
 
-#usuariosCliente
-RewriteRule ^perfil-clientes/$ users/cliente.php
+#perfilUsuario
+RewriteRule ^perfil-usuarios/$ usuarios/usuario.php
 
-#usuarios
-RewriteRule ^usuario/$ users/usuario.php
+#perfilCliente
+RewriteRule ^clientes/$ clientes/cliente.php
 
 #catalogo
 RewriteRule ^catalogos/$ catalogos/catalogo.php
