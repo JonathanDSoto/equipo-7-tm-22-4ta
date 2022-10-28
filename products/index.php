@@ -178,15 +178,8 @@
             var bodyFormData = new FormData();
             bodyFormData.append('email', email);
             bodyFormData.append('action', 'exit');
-            bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>');
-            console.log(email);
-            .then(function (response){
-                console.log('hola');
-                
-            })
-            .catch(function (error){
-                console.log('error');
-            })
+            bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>')
+            
         }
         function remove(id) {
             swal({

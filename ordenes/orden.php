@@ -1,6 +1,10 @@
 <?php 
     // include "../app/config.php";
     include "../app/OrderController.php";
+    include "../app/ProductsController.php";
+
+    $productController = new ProductsController();
+    $productos = $productController->getProducts();
 
     $ordercontroller = new OrderController();
     $ordenes = $ordercontroller->getOrders();
@@ -92,11 +96,12 @@
                                             <div class="col-xxl-2 col-sm-4">
                                                 <div>
                                                     <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idPayment">
-                                                        <option value="">Forma de pago</option>
+                                                        <!-- <option value="">Forma de pago</option>
                                                         <option value="Mastercard"> Tarjeta Mastercard</option>
                                                         <option value="Visa">Tarjeta de Débito</option>
                                                         <option value="Paypal">Paypal</option>
-                                                        <option value="Visa">Visa</option>
+                                                        <option value="Visa">Visa</option> -->
+                                                        
                                                     </select>
                                                 </div>
                                             </div>
@@ -168,11 +173,16 @@
                                                                 }            
                                                                 // echo $arayP->brand->name;                             
                                                             ?></td>
-                                                            <td class="product_name"><?= $arayP->presentations->description ?></td>
+                                                            <td class="product_name">
+                                                                <p class="card-text ">  
+                                                                    <?php foreach ($arayP->presentations as $arrayPresent) { ?>
+                                                                        <?php echo $arrayPresent->description?> <br>
+                                                                    <?php }?>
+                                                                </p>
                                                             <td class="date">bla<</td>
-                                                            <td class="amount">$654</td>
-                                                            <td class="payment">Mastercard</td>
-                                                            <td class="status"><span class="badge badge-soft-warning text-uppercase">Pendiente</span>
+                                                            <td class="amount">$<?= $arayP->folio ?></td>
+                                                            <td class="payment"><?= $arayP->payment_type->name ?></td>
+                                                            <td class="status"><span class="badge badge-soft-warning text-uppercase"><?= $arayP->order_status->name ?></span>
                                                             </td>
                                                             <td>
                                                                 <ul class="list-inline hstack gap-2 mb-0">
@@ -210,6 +220,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- $folio, $total, $is_paid, $client_id, $address_id, $order_status_id, $payment_type_id, $coupon_id -->
                                     <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -227,26 +238,16 @@
                                                         </div>
 
                                                         <div class="mb-3">
-                                                            <label for="customername-field" class="form-label">Customer Name</label>
+                                                            <label name="folio" for="customername-field" class="form-label">folio</label>
                                                             <input type="text" id="customername-field" class="form-control" placeholder="Enter name" required />
                                                         </div>
 
                                                         <div class="mb-3">
                                                             <label for="productname-field" class="form-label">Product</label>
-                                                            <select class="form-control" data-trigger name="productname-field" id="productname-field">
-                                                                <option value="">Product</option>
-                                                                <option value="Puma Tshirt">Puma Tshirt</option>
-                                                                <option value="Adidas Sneakers">Adidas Sneakers</option>
-                                                                <option value="350 ml Glass Grocery Container">350 ml Glass Grocery Container</option>
-                                                                <option value="American egale outfitters Shirt">American egale outfitters Shirt</option>
-                                                                <option value="Galaxy Watch4">Galaxy Watch4</option>
-                                                                <option value="Apple iPhone 12">Apple iPhone 12</option>
-                                                                <option value="Funky Prints T-shirt">Funky Prints T-shirt</option>
-                                                                <option value="USB Flash Drive Personalized with 3D Print">USB Flash Drive Personalized with 3D Print</option>
-                                                                <option value="Oxford Button-Down Shirt">Oxford Button-Down Shirt</option>
-                                                                <option value="Classic Short Sleeve Shirt">Classic Short Sleeve Shirt</option>
-                                                                <option value="Half Sleeve T-Shirts (Blue)">Half Sleeve T-Shirts (Blue)</option>
-                                                                <option value="Noise Evolve Smartwatch">Noise Evolve Smartwatch</option>
+                                                            <select  class="form-control" data-trigger name="productname-field" id="productname-field">
+                                                                <?php foreach($productos as $arrayProducts){ ?>
+                                                                    <option value="<?php echo $arrayProducts ->id ?>"> <?php echo $arrayProducts->name ?> </option>
+                                                                <?php }?>                                                            
                                                             </select>
                                                         </div>
 
