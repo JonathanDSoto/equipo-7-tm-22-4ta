@@ -2,12 +2,16 @@ Options +FollowSymLinks -MultiViews
 RewriteEngine on
 
 #Rutas
+RewriteRule ^address$ app/AddressController.php
 RewriteRule ^auth$ app/AuthController.php
 RewriteRule ^brand$ app/BrandController.php
 RewriteRule ^cliente$ app/ClientController.php
 RewriteRule ^coupon$ app/CouponController.php
+RewriteRule ^level$ app/LevelController.php
 RewriteRule ^order$ app/OrderController.php
+RewriteRule ^presentation$ app/PresentationController.php
 RewriteRule ^product$ app/ProductsController.php
+RewriteRule ^tags$ app/TagController.php
 RewriteRule ^user$ app/UserController.php
 
 #iniciarSesion
@@ -39,4 +43,4 @@ RewriteRule ^cupones/$ cupones/cupon.php
 
 #orden
 RewriteRule ^ordenes/$ ordenes/orden.php
-RewriteRule ^detalles-ordenes/$ ordenes/orden-details.php
+RewriteRule ^detalles-ordenes/(.+)$ ordenes/orden-details.php?slug=$1
