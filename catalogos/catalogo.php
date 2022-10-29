@@ -48,62 +48,54 @@
                         <!-- end page title -->
 
                         <div class="row">
-                            
-                            <div class="col-lg-12">
+                            <div class="col-lg-9 col-xl-12">
                                 <div>
                                     <div class="card">
                                         <div class="card-header border-0">
-                                            <div class="row g-4">
-                                                <div class="col-sm">
-                                                    <div class="d-flex justify-content-sm-end">
-                                                        <div class="search-box ms-2">
-                                                            <input type="text" class="form-control" id="searchProductList" placeholder="Buscar Producto...">
-                                                            <i class="ri-search-line search-icon"></i>
+                                            <div class="row g-6">
+                                                <div class="row align-items-center">
+                                                        <div class="col">
+                                                            <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0" role="tablist">
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link active fw-semibold" data-bs-toggle="tab" href="#productnav-all" role="tab">
+                                                                        Todos
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#productnav-electrodomesticos" role="tab">
+                                                                        Categorías
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#productnav-deportivo" role="tab">
+                                                                        Marcas
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#productnav-casual" role="tab">
+                                                                        Tags 
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#productnav-draft" role="tab">
+                                                                        Draft
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <div id="selection-element">
+                                                                <div class="my-n1 d-flex align-items-center text-muted">
+                                                                    Select <div id="select-content" class="text-body fw-semibold px-1"></div> Result <button type="button" class="btn btn-link link-danger p-0 ms-3 shadow-none" data-bs-toggle="modal" data-bs-target="#removeItemModal">Remove</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
                                             </div>
                                         </div>
 
-                                        <div class="row align-items-center">
-                                                <div class="col">
-                                                    <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0" role="tablist">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link active fw-semibold" data-bs-toggle="tab" href="#productnav-all" role="tab">
-                                                                Todos
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#productnav-electrodomesticos" role="tab">
-                                                                Categorías
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#productnav-deportivo" role="tab">
-                                                                Marcas
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#productnav-casual" role="tab">
-                                                                Tags 
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#productnav-draft" role="tab">
-                                                                Draft
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <div id="selection-element">
-                                                        <div class="my-n1 d-flex align-items-center text-muted">
-                                                            Select <div id="select-content" class="text-body fw-semibold px-1"></div> Result <button type="button" class="btn btn-link link-danger p-0 ms-3 shadow-none" data-bs-toggle="modal" data-bs-target="#removeItemModal">Remove</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <!-- end card header -->
                                         <div class="card-body">
