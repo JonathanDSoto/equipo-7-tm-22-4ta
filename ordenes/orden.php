@@ -187,7 +187,7 @@
                                                             <td>
                                                                 <ul class="list-inline hstack gap-2 mb-0">
                                                                     <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ver">
-                                                                        <a href="apps-ecommerce-order-details.html" class="text-primary d-inline-block">
+                                                                        <a href="<?= BASE_PATH."detalles-ordenes/".$arayP->id?>" class="text-primary d-inline-block">
                                                                             <i class="ri-eye-fill fs-16"></i>
                                                                         </a>
                                                                     </li>
@@ -239,7 +239,7 @@
 
                                                         <div class="mb-3">
                                                             <label name="folio" for="customername-field" class="form-label">folio</label>
-                                                            <input type="text" id="customername-field" class="form-control" placeholder="Enter name" required />
+                                                            <input type="text" id="customername-field" class="form-control" placeholder="folio..." required />
                                                         </div>
 
                                                         <div class="mb-3">
@@ -357,6 +357,66 @@
 
     <!-- Sweet Alerts js -->
     <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+
+    <script type="text/javascript">
+        function remove(id) {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                swal("Poof! Your imaginary file has been deleted!", {
+                    icon: "success",
+                });
+                var bodyFormData = new FormData();
+                bodyFormData.append('id', id);
+                bodyFormData.append('action', 'delete');
+                bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>');
+                console.log(id);
+                axios.post('<?= BASE_PATH ?>productos',bodyFormData)
+                .then(function (response){
+                            console.log('hola');
+                            
+                        })
+                        .catch(function (error){
+                            console.log('error');
+                        })
+
+                 
+
+            } else {
+                swal("Your imaginary file is safe!");
+            }
+            });  
+        }
+
+        function addProduct() {
+            document.getElementById('inputOculto').value = 'create';
+            document.getElementById('name').value = "";
+            document.getElementById('slug').value = "";
+            document.getElementById('description').value = "";
+            document.getElementById('features').value = "";
+            document.getElementById('brand_id').value = 1;
+        }
+
+        function editProduct(target) { 
+            document.getElementById('inputOculto').value = 'update';
+
+            let product = JSON.parse(target.getAttribute('data-product'));
+            document.getElementById('name').value = product.name;
+            document.getElementById('slug').value = product.slug;
+            document.getElementById('description').value = product.description;
+            document.getElementById('features').value = product.features;
+            document.getElementById('brand_id').value = product.brand_id;
+            document.getElementById('id').value = product.id;
+
+        }
+    </script>
 </body>
 
 
