@@ -19,15 +19,11 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
 
-        
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
         <div class="main-content">
 
             <div class="page-content">
                 <div class="container-fluid">
-                    <!-- start page title -->
+
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -43,7 +39,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end page title -->
 
                     <div class="row">
                         <div class="col-xxl-3 col-sm-6">
@@ -51,9 +46,9 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <p class="fw-medium text-muted mb-0">Total Tasks</p>
+                                            <p class="fw-medium text-muted mb-0">Total de Cupones</p>
                                             <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value" data-target="234">0</span>k</h2>
-                                            <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0"> <i class="ri-arrow-up-line align-middle"></i> 17.32 %</span> vs. previous month</p>
+                                            <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0"> <i class="ri-arrow-up-line align-middle"></i> 17.32 %</span> altas </p>
                                         </div>
                                         <div>
                                             <div class="avatar-sm flex-shrink-0">
@@ -72,9 +67,9 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <p class="fw-medium text-muted mb-0">Pending Tasks</p>
+                                            <p class="fw-medium text-muted mb-0">Cupones pendinetes</p>
                                             <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value" data-target="64.5">0</span>k</h2>
-                                            <p class="mb-0 text-muted"><span class="badge bg-light text-danger mb-0"> <i class="ri-arrow-down-line align-middle"></i> 0.87 %</span> vs. previous month</p>
+                                            <p class="mb-0 text-muted"><span class="badge bg-light text-danger mb-0"> <i class="ri-arrow-down-line align-middle"></i> 0.87 %</span> modificados</p>
                                         </div>
                                         <div>
                                             <div class="avatar-sm flex-shrink-0">
@@ -93,7 +88,7 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <p class="fw-medium text-muted mb-0">Completed Tasks</p>
+                                            <p class="fw-medium text-muted mb-0">Cupones usados</p>
                                             <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value" data-target="116.21">0</span>K</h2>
                                             <p class="mb-0 text-muted"><span class="badge bg-light text-danger mb-0">
                                                     <i class="ri-arrow-down-line align-middle"></i> 2.52 %
@@ -116,11 +111,11 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <p class="fw-medium text-muted mb-0">Deleted Tasks</p>
+                                            <p class="fw-medium text-muted mb-0">Cupones eliminados</p>
                                             <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value" data-target="14.84">0</span>%</h2>
                                             <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
                                                     <i class="ri-arrow-up-line align-middle"></i> 0.63 %
-                                                </span> vs. previous month</p>
+                                                </span> bajas</p>
                                         </div>
                                         <div>
                                             <div class="avatar-sm flex-shrink-0">
@@ -146,35 +141,7 @@
                                         
                                     </div>
                                 </div>
-                                <div class="card-body border border-dashed border-end-0 border-start-0">
-                                    <form>
-                                        <div class="row g-3">
-                                            
-
-                                            <div class="col-xxl-3 col-sm-4">
-                                                <input type="text" class="form-control bg-light border-light" id="demo-datepicker" data-provider="flatpickr" data-date-format="d M, Y" data-range-date="true" placeholder="Select date range">
-                                            </div>
-                                            <!--end col-->
-
-                                            <div class="col-xxl-3 col-sm-4">
-                                                <div class="input-light">
-                                                    <select class="form-control" data-choices data-choices-search-false name="choices-single-default" id="idStatus">
-                                                        <option value="">Status</option>
-                                                        <option value="all" selected>All</option>
-                                                        <option value="New">New</option>
-                                                        <option value="Pending">Pending</option>
-                                                        <option value="Inprogress">Inprogress</option>
-                                                        <option value="Completed">Completed</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            
-                                        </div>
-                                        <!--end row-->
-                                    </form>
-                                </div>
-                                <!--end card-body-->
+                                
                                 <div class="card-body">
                                     <div class="table-responsive table-card mb-4">
                                         <table class="table align-middle table-nowrap mb-0" id="tasksTable">
@@ -186,13 +153,13 @@
                                                         </div>
                                                     </th>
                                                     <th class="sort" data-sort="id">ID</th>
-                                                    <th class="sort" data-sort="project_name">Project</th>
-                                                    <th class="sort" data-sort="tasks_name">Task</th>
-                                                    <th class="sort" data-sort="client_name">Client Name</th>
-                                                    <th class="sort" data-sort="assignedto">Assigned To</th>
-                                                    <th class="sort" data-sort="due_date">Due Date</th>
-                                                    <th class="sort" data-sort="status">Status</th>
-                                                    <th class="sort" data-sort="priority">Priority</th>
+                                                    <th class="sort" data-sort="project_name">Folio</th>
+                                                    <th class="sort" data-sort="tasks_name">Nombre Cupon</th>
+                                                    <th class="sort" data-sort="client_name">Nom Cliente</th>
+                                                    <th class="sort" data-sort="assignedto">Utilizado</th>
+                                                    <th class="sort" data-sort="due_date">Fecha </th>
+                                                    <th class="sort" data-sort="status">Porcentaje</th>
+                                                    <th class="sort" data-sort="priority">Orden</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="list form-check-all">
@@ -206,55 +173,35 @@
                                                     <td class="project_name"><a href="apps-projects-overview.html" class="fw-medium link-primary">Velzon -
                                                             v1.0.0</a></td>
                                                     <td>
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 tasks_name">Profile Page Satructure</div>
-                                                            <div class="flex-shrink-0 ms-4">
-                                                                <ul class="list-inline tasks-list-menu mb-0">
-                                                                    <li class="list-inline-item"><a href="apps-tasks-details.html"><i class="ri-eye-fill align-bottom me-2 text-muted"></i></a></li>
-                                                                    <li class="list-inline-item"><a class="edit-item-btn" href="#showModal" data-bs-toggle="modal"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i></a></li>
-                                                                    <li class="list-inline-item">
-                                                                        <a class="remove-item-btn" data-bs-toggle="modal" href="#deleteOrder">
-                                                                            <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
+                                                        <div class="flex-grow-1 tasks_name">Profile Page Satructure</div>
                                                     </td>
                                                     <td class="client_name">Robert McMahon</td>
                                                     <td class="assignedto">
                                                         <div class="avatar-group">
                                                             <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Frank">
-                                                                <img src="assets/images/users/avatar-3.jpg" alt="" class="rounded-circle avatar-xxs" />
+                                                                <img src="<?= BASE_PATH ?>public/images/users/avatar-3.jpg"  alt="" class="rounded-circle avatar-xxs"/>
                                                             </a>
                                                             <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Anna">
-                                                                <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-circle avatar-xxs" />
+                                                                <img src="<?= BASE_PATH ?>public/images/users/avatar-2.jpg"  alt="" class="rounded-circle avatar-xxs"/>
                                                             </a>
                                                         </div>
                                                     </td>
                                                     <td class="due_date">25 Jan, 2022</td>
-                                                    <td class="status"><span class="badge badge-soft-secondary text-uppercase">Inprogress</span></td>
+                                                    <td class="status"><span class="badge badge-soft-secondary text-uppercase">10%</span></td>
                                                     <td class="priority"><span class="badge bg-danger text-uppercase">High</span></td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <!--end table-->
-                                        <div class="noresult" style="display: none">
-                                            <div class="text-center">
-                                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px"></lord-icon>
-                                                <h5 class="mt-2">Sorry! No Result Found</h5>
-                                                <p class="text-muted mb-0">We've searched more than 200k+ tasks We did not find any tasks for you search.</p>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                     <div class="d-flex justify-content-end mt-2">
                                         <div class="pagination-wrap hstack gap-2">
                                             <a class="page-item pagination-prev disabled" href="#">
-                                                Previous
+                                                Anterior
                                             </a>
                                             <ul class="pagination listjs-pagination mb-0"></ul>
                                             <a class="page-item pagination-next" href="#">
-                                                Next
+                                                Siguiente
                                             </a>
                                         </div>
                                     </div>
