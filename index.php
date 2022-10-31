@@ -68,7 +68,7 @@
                                             
                                             <label class="form-label" for="password-input">Contraseña</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" class="form-control pe-5 password-input" placeholder="Introducir la contraseña" id="password" name="password" pattern="([\w\d/!%$@?][^\s])+">
+                                                <input type="password" class="form-control pe-5 password-input" placeholder="Introducir la contraseña" id="password" name="password" pattern="([\w\d/!%$@#?][^\s])+" title="La contraseña solo acepta letras, números y caracteres especiales (@ ! ? $ % #).">
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted shadow-none password-addon" type="button" id="password-addon"></button>
                                             </div>
                                         </div>
