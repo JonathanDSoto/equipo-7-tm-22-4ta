@@ -80,7 +80,7 @@
                                                                     <img src="https://crud.jonathansoto.mx/storage/products/<?php echo $arrayPresent->cover ?> " class="img-fluid d-block" alt="..."/>
                                                                 </div>
                                                                 <div class="flex-grow-1 ms-3">
-                                                                    <h5 class="fs-15"><a href="apps-ecommerce-product-details.html" class="link-primary"><?= $arrayPresent->description ?></a></h5>
+                                                                    <h5 class="fs-15"><?= $arrayPresent->description ?></h5>
                                                                     <p class="text-muted mb-0">Tamaño: <span class="fw-medium"><?php echo $arrayPresent->weight_in_grams ?> gr</span></p>
                                                                     <p class="text-muted mb-0">Codigo: <span class="fw-medium"><?php echo $arrayPresent->code ?> </span></p>
                                                                 </div>

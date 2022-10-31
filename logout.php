@@ -57,7 +57,7 @@
                                     <h5>Has Cerrado Sesión</h5>
                                     <p class="text-muted">Gracias por visitar nuestra página 
                                     <div class="mt-4">
-                                        <a href="../equipo-7-tm-22-4ta/index.php" class="btn btn-success w-100">Iniciar Sesión</a>
+                                        <a href="<?= BASE_PATH ?>iniciar-sesion/" class="btn btn-success w-100">Iniciar Sesión</a>
                                     </div>
                                 </div>
                             </div>

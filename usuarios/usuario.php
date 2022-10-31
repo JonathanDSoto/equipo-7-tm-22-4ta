@@ -1,5 +1,9 @@
 <?php 
-    include "../app/config.php";
+    include "../app/UserController.php";
+    $idTemp=$_SESSION['id'];
+
+    $tempUser = new UserController;    
+    $user = $tempUser->getUser($idTemp);
 ?>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -35,17 +39,14 @@
                         <div class="row g-4">
                             <div class="col-auto">
                                 <div class="avatar-lg">
-                                    <img src="<?= BASE_PATH ?>public/images/users/avatar-1.jpg"  alt="user-img" class="img-thumbnail rounded-circle"/>
+                                    <img src="<?= $user->avatar ?>"  alt="user-img" class="img-thumbnail rounded-circle"/>
                                 </div>
                             </div>
                             
                             <div class="col">
                                 <div class="p-2">
-                                    <h3 class="text-white mb-1">Guadalupe Eridani</h3>
-                                    <p class="text-white-75">Maquetador</p>
-                                    <div class="hstack text-white-50 gap-1">
-                                        <div class="me-2"><i class="ri-map-pin-user-line me-1 text-white-75 fs-16 align-middle"></i>La Paz B.C.S., México</div>
-                                    </div>
+                                    <h3 class="text-white mb-1"><?= $_SESSION['name'] ?></h3>
+                                    <p class="text-white-75"><?= $user->role ?></p>
                                 </div>
                             </div>
                         </div>
@@ -64,21 +65,20 @@
                                                         <table class="table table-borderless mb-0">
                                                             <tbody>
                                                                 <tr>
-                                                                    <th class="ps-0" scope="row">Nombre Completo :</th>
-                                                                    <td class="text-muted">Guadalupe Eridani</td>
+                                                                    <th class="ps-0" scope="row">Nombre :</th>
+                                                                    <td class="text-muted"><?= $user->name ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="ps-0" scope="row">Apellidos :</th>
+                                                                    <td class="text-muted"> <?= $user->lastname ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th class="ps-0" scope="row">Móvil :</th>
-                                                                    <td class="text-muted">+(52) 612 1223456</td>
+                                                                    <td class="text-muted"><?= $user->phone_number ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th class="ps-0" scope="row">Correo electrónico :</th>
-                                                                    <td class="text-muted">guadalupe@velzon.com</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th class="ps-0" scope="row">Ubicación :</th>
-                                                                    <td class="text-muted">La Paz B.C.S., México
-                                                                    </td>
+                                                                    <td class="text-muted"><?= $user->email ?></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -87,72 +87,7 @@
                                             </div><!-- end card -->
                                         </div>
                                         <!--end col-->
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center mb-4">
-                                                    <div class="flex-grow-1">
-                                                        <h5 class="card-title mb-0">Sugerencias</h5>
-                                                    </div>
-                                                    <div class="flex-shrink-0">
-                                                        <div class="dropdown">
-                                                            <a href="#" role="button" id="dropdownMenuLink2" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                <i class="ri-more-2-fill fs-14"></i>
-                                                            </a>
-
-                                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink2">
-                                                                <li><a class="dropdown-item" href="#">Ver</a></li>
-                                                                <li><a class="dropdown-item" href="#">Editar</a></li>
-                                                                <li><a class="dropdown-item" href="#">Eliminar</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="d-flex align-items-center py-3">
-                                                        <div class="avatar-xs flex-shrink-0 me-3">
-                                                            <img src="<?= BASE_PATH ?>public/images/users/avatar-7.jpg"  alt="user-img" class="img-fluid rounded-circle shadow"/>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <div>
-                                                                <h5 class="fs-14 mb-1">Moises Moreno</h5>
-                                                                <p class="fs-13 text-muted mb-0">Desarrollador Frontend</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-shrink-0 ms-2">
-                                                            <button type="button" class="btn btn-sm btn-outline-success shadow-none"><i class="ri-user-add-line align-middle"></i></button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex align-items-center py-3">
-                                                        <div class="avatar-xs flex-shrink-0 me-3">
-                                                            <img src="<?= BASE_PATH ?>public/images/users/avatar-8.jpg"  alt="user-img" class="img-fluid rounded-circle shadow"/>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <div>
-                                                                <h5 class="fs-14 mb-1">Aarón Arturo</h5>
-                                                                <p class="fs-13 text-muted mb-0">Desarrollador Backend</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-shrink-0 ms-2">
-                                                            <button type="button" class="btn btn-sm btn-outline-success shadow-none"><i class="ri-user-add-line align-middle"></i></button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex align-items-center py-3">
-                                                        <div class="avatar-xs flex-shrink-0 me-3">
-                                                            <img src="<?= BASE_PATH ?>public/images/users/avatar-9.jpg"  alt="user-img" class="img-fluid rounded-circle shadow"/>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <div>
-                                                                <h5 class="fs-14 mb-1">Niggel Altamirano</h5>
-                                                                <p class="fs-13 text-muted mb-0">QA</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="flex-shrink-0 ms-2">
-                                                            <button type="button" class="btn btn-sm btn-outline-success shadow-none"><i class="ri-user-add-line align-middle"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

@@ -44,7 +44,7 @@
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Productos</a></li>
+                                        <li class="breadcrumb-item"><a href="<?= BASE_PATH ?>productos/">Productos</a></li>
                                         <li class="breadcrumb-item active">Crear Productos</li>
                                     </ol>
                                 </div>

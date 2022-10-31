@@ -48,7 +48,7 @@
     
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tienda</a></li>
+                                        <li class="breadcrumb-item">Tienda</li>
                                         <li class="breadcrumb-item active">Productos</li>
                                     </ol>
                                 </div>
@@ -86,7 +86,7 @@
                                             ?>     
                                         </p>  
                                         <div class="row">
-                                            <a href="<?= BASE_PATH."detalle-productos/". $arayP->slug?>" class=" mt-1 btn btn-success col-6">Ver Detalles</a> 
+                                            <a href="<?= BASE_PATH."detalle-productos/". $arayP->slug."/"?>" class=" mt-1 btn btn-success col-6">Ver Detalles</a> 
                                             <a  onclick ="editProduct(this)"  data-product='<?php echo json_encode($arayP); ?>' data-bs-toggle="modal" data-bs-target="#editarproduct"  class="mt-1 btn btn-secondary col-6">Editar </a>
                                         </div>                                       
                                         <a onclick="remove(<?php echo $arayP->id ?>)" class="mt-1 btn btn-danger col-12">Eliminar Producto</a>    

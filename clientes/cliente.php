@@ -1,8 +1,13 @@
 <?php 
     include "../app/ClientController.php";
+    include "../app/LevelController.php";
+
+    $tempLevel = new LevelController;    
+    $Levels = $tempLevel->getLevels();  
 
     $tempClient = new ClientController();
     $clientes = $tempClient->getClients();
+    // var_dump($clientes);
     
 ?>
 <!doctype html>
@@ -51,7 +56,7 @@
                                 <div class="card-header  border-0">
                                     <div class="d-flex align-items-center">
                                         <div class="flex-shrink-0">
-                                            <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Crear cliente</button>
+                                            <button onclick="addCliente()" class="btn btn-success add-btn" data-bs-toggle="modal"  data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Crear cliente</button>
                                         </div>
                                     </div>
                                 </div>
@@ -69,17 +74,11 @@
                                         <div class="table-responsive table-card mb-1">
                                             <table class="table table-nowrap align-middle" id="orderTable">
                                                 <thead class="text-muted table-light">
-                                                    <tr class="text-uppercase">
-                                                        <th scope="col" style="width: 25px;">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" id="checkAll" value="option">
-                                                            </div>
-                                                        </th>
+                                                    <tr class="text-uppercase">                                                       
                                                         <th class="sort" data-sort="id">ID</th>
                                                         <th class="sort" data-sort="customer_name">Nombre del cliente</th>
                                                         <th class="sort" data-sort="product_name">Numero de telefono</th>
                                                         <th class="sort" data-sort="date">Correo electrónico</th>
-                                                        <th class="sort" data-sort="amount">Número de teléfono</th>
                                                         <th class="sort" data-sort="payment">Orden</th>
                                                         <th class="sort" data-sort="status">Nivel</th>
                                                         <th class="sort" data-sort="city">Acción</th>
@@ -88,29 +87,33 @@
                                                 <tbody class="list form-check-all">
                                                     <?php foreach ($clientes as $arrayClientes) { ?>
                                                         <tr>
-                                                            <th scope="row">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" name="checkAll" value="option1">
-                                                                </div>
-                                                            </th>
-                                                            <td class="id"><a href="apps-ecommerce-order-details.html" class="fw-medium link-primary"><?= $arrayClientes->id ?></a></td>
+                                                            <td class="id"><?= $arrayClientes->id ?></td>
                                                             <td class="customer_name"> <?= $arrayClientes->name ?> </td>
                                                             <td class="product_name"> <?= $arrayClientes->phone_number ?></td>
-                                                            <td class="date">20 Dec, 2021, <small class="text-muted">02:21 AM</small></td>
-                                                            <td class="amount">$654</td>
-                                                            <td class="payment">Mastercard</td>
-                                                            <td class="status"><span class="badge badge-soft-warning text-uppercase">Pending</span>
+                                                            <td class="date"><?= $arrayClientes->email ?></td>
+                                                            <td>
+                                                                <?php foreach ($arrayClientes->orders as $arrayOrders) { ?>
+                                                                    <a href="<?= BASE_PATH."detalles-ordenes/".$arrayOrders->id?>"><?= $arrayOrders->folio ?></a><br>
+                                                                <?php }?>
+                                                            </td>
+                                                           
+                                                            <td class="payment">
+                                                            <?php foreach ($Levels as $arrayLevel) { 
+                                                                if (($arrayLevel->id) == ($arrayClientes->level->id)) {                                                
+                                                                    echo $arrayLevel->name;
+                                                                }   
+                                                            }?>
                                                             </td>
                                                             
                                                             <td>
                                                                 <ul class="list-inline hstack gap-2 mb-0">
                                                                     <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Editar">
-                                                                        <a href="#showModal" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">
+                                                                        <a onclick ="editCliente(this)" data-product='<?php echo json_encode($arrayClientes); ?>' data-bs-toggle="modal" data-bs-target="#showModal" class="text-primary d-inline-block edit-item-btn">
                                                                             <i class="ri-pencil-fill fs-16"></i>
                                                                         </a>
                                                                     </li>
                                                                     <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Eliminar">
-                                                                        <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" href="#deleteOrder">
+                                                                        <a onclick="remove(<?php echo $arrayClientes->id ?>)" class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" href="#deleteOrder">
                                                                             <i class="ri-delete-bin-5-fill fs-16"></i>
                                                                         </a>
                                                                     </li>
@@ -122,17 +125,7 @@
                                             </table>
                                             
                                         </div>
-                                        <div class="d-flex justify-content-end">
-                                            <div class="pagination-wrap hstack gap-2">
-                                                <a class="page-item pagination-prev disabled" href="#">
-                                                    Anterior
-                                                </a>
-                                                <ul class="pagination listjs-pagination mb-0"></ul>
-                                                <a class="page-item pagination-next" href="#">
-                                                    Siguiente
-                                                </a>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                     <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -141,42 +134,41 @@
                                                     <h5 class="modal-title" id="exampleModalLabel">&nbsp;</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                 </div>
-                                                <form action="#">
+                                            <!-- ($name, $email, $password, $phone_number, $is_suscribed, $level_id){ -->
+                                                <form action="<?= BASE_PATH ?>cliente" method="post" enctype="multipart/form-data">
                                                     <div class="modal-body">
                                                         <input type="hidden" id="id-field" />
 
-                                                        <div class="mb-3" id="modal-id">
-                                                            <label for="orderId" class="form-label">ID</label>
-                                                            <input type="text" id="orderId" class="form-control" placeholder="ID" readonly />
+                                                        <div class="mb-3">
+                                                            <label for="customername-field" class="form-label">Nombre</label>
+                                                            <input type="text" id="name" name="name" class="form-control" placeholder="nombre..." required />
                                                         </div>
 
                                                         <div class="mb-3">
-                                                            <label for="customername-field" class="form-label">Customer Name</label>
-                                                            <input type="text" id="customername-field" class="form-control" placeholder="Enter name" required />
+                                                            <label for="customername-field" class="email" class="form-control" placeholder="correo..." required >email</label>
+                                                            <input type="email" id="email" name="email" class="form-control" placeholder="email..." required />
+
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="customername-field" class="email" class="form-control" placeholder="correo..." required >contraseña</label>
+                                                            <input type="password" id="password" name="password" class="form-control" placeholder="contraseña..." required />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="customername-field" class="email" class="form-control" placeholder="correo..." required >Telefono</label>
+                                                            <input type="text" id="phone_number" name="phone_number" class="form-control" placeholder="telefono..." required />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="customername-field" class="email" class="form-control" placeholder="correo..." required >is_suscribed</label>
+                                                            <input type="text" id="is_suscribed" name="is_suscribed" class="form-control" placeholder="Suscribed..." required />
                                                         </div>
 
                                                         <div class="mb-3">
-                                                            <label for="productname-field" class="form-label">Product</label>
-                                                            <select class="form-control" data-trigger name="productname-field" id="productname-field">
-                                                                <option value="">Product</option>
-                                                                <option value="Puma Tshirt">Puma Tshirt</option>
-                                                                <option value="Adidas Sneakers">Adidas Sneakers</option>
-                                                                <option value="350 ml Glass Grocery Container">350 ml Glass Grocery Container</option>
-                                                                <option value="American egale outfitters Shirt">American egale outfitters Shirt</option>
-                                                                <option value="Galaxy Watch4">Galaxy Watch4</option>
-                                                                <option value="Apple iPhone 12">Apple iPhone 12</option>
-                                                                <option value="Funky Prints T-shirt">Funky Prints T-shirt</option>
-                                                                <option value="USB Flash Drive Personalized with 3D Print">USB Flash Drive Personalized with 3D Print</option>
-                                                                <option value="Oxford Button-Down Shirt">Oxford Button-Down Shirt</option>
-                                                                <option value="Classic Short Sleeve Shirt">Classic Short Sleeve Shirt</option>
-                                                                <option value="Half Sleeve T-Shirts (Blue)">Half Sleeve T-Shirts (Blue)</option>
-                                                                <option value="Noise Evolve Smartwatch">Noise Evolve Smartwatch</option>
+                                                            <label for="productname-field" class="form-label">Nivel</label>
+                                                            <select class="form-select" data-trigger name="level_id" id="level_id">
+                                                                <?php foreach($Levels as $arrayLevel){ ?>
+                                                                    <option value="<?php echo $arrayLevel ->id ?>"> <?php echo $arrayLevel->name ?> </option>
+                                                                <?php }?>
                                                             </select>
-                                                        </div>
-
-                                                        <div class="mb-3">
-                                                            <label for="date-field" class="form-label">Order Date</label>
-                                                            <input type="date" id="date-field" class="form-control" data-provider="flatpickr" data-date-format="d M, Y" data-enable-time required placeholder="Select date" />
                                                         </div>
 
                                                         
@@ -185,9 +177,10 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success" id="add-btn">Add Order</button>
-                                                            <button type="button" class="btn btn-success" id="edit-btn">Update</button>
+                                                            <input type="hidden" name="id" id="id">
+                                                            <input type="hidden" id="inputOculto"  name="action">
+                                                            <input type="hidden" name="global_token" value="<?= $_SESSION['global_token'] ?>">
+                                                            <button type="submit" class="btn btn-primary">Guardar cambios</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -196,23 +189,7 @@
                                     </div>
 
                                     <!-- Modal -->
-                                    <div class="modal fade flip" id="deleteOrder" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-body p-5 text-center">
-                                                    <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
-                                                    <div class="mt-4 text-center">
-                                                        <h4>¿Está a punto de eliminar al cliente?</h4>
-                                                        <p class="text-muted fs-15 mb-4">Eliminar al cliente eliminará toda su información de nuestra base de datos.</p>
-                                                        <div class="hstack gap-2 justify-content-center remove">
-                                                            <button class="btn btn-link link-success fw-medium text-decoration-none" id="deleteRecord-close" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Cerrar</button>
-                                                            <button class="btn btn-danger" id="delete-record">Si, Eliminalo</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <!--end modal -->
                                 </div>
                             </div>
@@ -232,6 +209,67 @@
         <!-- end main content-->
     </div>
     <!-- END layout-wrapper -->
+
+    <script type="text/javascript">
+        function remove(id) {
+            swal({
+                title: "Estas seguro?",
+                text: "No podras recuperar el usuario",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                swal("Poof! El usuario fue eliminado!", {
+                    icon: "success",
+                });
+                var bodyFormData = new FormData();
+                bodyFormData.append('id', id);
+                bodyFormData.append('action', 'delete');
+                bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>');
+                axios.post('<?= BASE_PATH ?>cliente',bodyFormData)
+                .then(function (response){
+                            console.log('hola');
+                            
+                        })
+                        .catch(function (error){
+                            console.log('error');
+                        })
+
+                 
+
+            } else {
+                swal("Usuario NO eliminado!");
+            }
+            });  
+        }
+
+        function addCliente() {
+
+            document.getElementById('inputOculto').value = 'create';
+            document.getElementById('name').value = "";
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            document.getElementById('phone_number').value = "";
+            document.getElementById('is_suscribed').value = "";
+            document.getElementById('level_id').value = "";
+        }
+
+        function editCliente(target) { 
+            document.getElementById('inputOculto').value = 'update';
+
+            let product = JSON.parse(target.getAttribute('data-product'));
+            document.getElementById('name').value = product.name;
+            document.getElementById('email').value = product.email;
+            document.getElementById('password').value = product.password;
+            document.getElementById('phone_number').value = product.phone_number;
+            document.getElementById('is_suscribed').value = product.is_suscribed;
+            document.getElementById('level_id').value = product.level_id;
+            document.getElementById('id').value = product.id;
+
+        }
+    </script>
 
     <?php include "../layouts/scripts.template.php"; ?>    
 
