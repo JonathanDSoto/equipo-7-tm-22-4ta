@@ -22,13 +22,13 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>clientes/">
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>perfil-usuarios/">
                                 <i class="ri-group-line"></i> <span data-key="t-widgets">Usuarios</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>perfil-clientes/">
+                            <a class="nav-link menu-link" href="<?= BASE_PATH ?>clientes/">
                                 <i class="ri-account-circle-line"></i> <span data-key="t-dashboards">Clientes</span>
                             </a>
                             
