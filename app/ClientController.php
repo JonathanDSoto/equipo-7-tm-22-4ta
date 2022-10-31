@@ -85,9 +85,9 @@ Class ClientController{
         // }
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."client/?success=true");
+            header("Location:".BASE_PATH."clientes/?success=true");
         }else {
-            header("Location:".BASE_PATH."client/?error=true");
+            header("Location:".BASE_PATH."clientes/?error=true");
         }
 
     }
@@ -131,9 +131,9 @@ Class ClientController{
         // }
 
         if(isset($response->code) && $response->code >0 ){
-            header("Location:".BASE_PATH."client/?success=true");
+            header("Location:".BASE_PATH."clientes/?success=true");
         }else {
-            header("Location:".BASE_PATH."client/?error=true");
+            header("Location:".BASE_PATH."clientes/?error=true");
         }
 
     }

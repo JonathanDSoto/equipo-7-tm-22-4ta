@@ -271,12 +271,7 @@ Class UserController{
     }
 
 
-
-
-
 }
-
-
 
 
 ?>

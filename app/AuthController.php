@@ -13,7 +13,6 @@ if (isset($_POST['action'])) {
 					$authController = new AuthController();
 					$email = strip_tags($_POST['email']);
 					$password = strip_tags($_POST['password']);
-					$_SESSION['email']	= $email;
 					$authController->login($email,$password);
 
 				}
@@ -23,9 +22,8 @@ if (isset($_POST['action'])) {
 
 				$authController = new AuthController();
 				$email = strip_tags($_POST['email']);
-				unset($_SESSION['name']);
-				unset($_SESSION['email']);
-				$authController -> logout($email);
+				var_dump($email);	
+				// $authController -> logout($email);
 
 				break; 
 		}
@@ -97,15 +95,10 @@ Class AuthController{
 		curl_close($curl);
 		$response = json_decode($response);
 
+		
 		if ( isset($response->code) && $response->code > 0) {
 
-			unset($_SESSION['email']);
-
-			unset($_SESSION['id']);
-			unset($_SESSION['name']);
-			unset($_SESSION['lastname']);
-            unset($_SESSION['avatar']);
-			unset($_SESSION['token']);
+			session_destroy();
 
 			header("Location:".BASE_PATH."?success=true");
 		}else{
