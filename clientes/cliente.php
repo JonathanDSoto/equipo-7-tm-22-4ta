@@ -1,5 +1,9 @@
 <?php 
-    include "../app/config.php";
+    include "../app/ClientController.php";
+
+    $tempClient = new ClientController();
+    $clientes = $tempClient->getClients();
+    
 ?>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
@@ -73,7 +77,7 @@
                                                         </th>
                                                         <th class="sort" data-sort="id">ID</th>
                                                         <th class="sort" data-sort="customer_name">Nombre del cliente</th>
-                                                        <th class="sort" data-sort="product_name">Apellidos</th>
+                                                        <th class="sort" data-sort="product_name">Numero de telefono</th>
                                                         <th class="sort" data-sort="date">Correo electrónico</th>
                                                         <th class="sort" data-sort="amount">Número de teléfono</th>
                                                         <th class="sort" data-sort="payment">Orden</th>
@@ -82,36 +86,38 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="list form-check-all">
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" name="checkAll" value="option1">
-                                                            </div>
-                                                        </th>
-                                                        <td class="id"><a href="apps-ecommerce-order-details.html" class="fw-medium link-primary">#VZ2101</a></td>
-                                                        <td class="customer_name">Frank Hook</td>
-                                                        <td class="product_name">Puma Tshirt</td>
-                                                        <td class="date">20 Dec, 2021, <small class="text-muted">02:21 AM</small></td>
-                                                        <td class="amount">$654</td>
-                                                        <td class="payment">Mastercard</td>
-                                                        <td class="status"><span class="badge badge-soft-warning text-uppercase">Pending</span>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <ul class="list-inline hstack gap-2 mb-0">
-                                                                <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Editar">
-                                                                    <a href="#showModal" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">
-                                                                        <i class="ri-pencil-fill fs-16"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Eliminar">
-                                                                    <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" href="#deleteOrder">
-                                                                        <i class="ri-delete-bin-5-fill fs-16"></i>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </td>
-                                                    </tr>
+                                                    <?php foreach ($clientes as $arrayClientes) { ?>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" name="checkAll" value="option1">
+                                                                </div>
+                                                            </th>
+                                                            <td class="id"><a href="apps-ecommerce-order-details.html" class="fw-medium link-primary"><?= $arrayClientes->id ?></a></td>
+                                                            <td class="customer_name"> <?= $arrayClientes->name ?> </td>
+                                                            <td class="product_name"> <?= $arrayClientes->phone_number ?></td>
+                                                            <td class="date">20 Dec, 2021, <small class="text-muted">02:21 AM</small></td>
+                                                            <td class="amount">$654</td>
+                                                            <td class="payment">Mastercard</td>
+                                                            <td class="status"><span class="badge badge-soft-warning text-uppercase">Pending</span>
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                <ul class="list-inline hstack gap-2 mb-0">
+                                                                    <li class="list-inline-item edit" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Editar">
+                                                                        <a href="#showModal" data-bs-toggle="modal" class="text-primary d-inline-block edit-item-btn">
+                                                                            <i class="ri-pencil-fill fs-16"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Eliminar">
+                                                                        <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" href="#deleteOrder">
+                                                                            <i class="ri-delete-bin-5-fill fs-16"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    <?php }?>                                                    
                                                 </tbody>
                                             </table>
                                             
