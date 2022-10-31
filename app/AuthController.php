@@ -22,8 +22,7 @@ if (isset($_POST['action'])) {
 
 				$authController = new AuthController();
 				$email = strip_tags($_POST['email']);
-				var_dump($email);	
-				// $authController -> logout($email);
+				$authController -> logout($email);
 
 				break; 
 		}
@@ -60,6 +59,7 @@ Class AuthController{
 
 			$_SESSION['id']= $response->data->id;
 			$_SESSION['name']= $response->data->name;
+			$_SESSION['email']= $response->data->email;
 			$_SESSION['lastname']= $response->data->lastname;
 			$_SESSION['avatar']= $response->data->avatar;
 			$_SESSION['token']= $response->data->token;
@@ -76,7 +76,7 @@ Class AuthController{
 	public function logout($email){
 
 		$curl = curl_init();
-
+		$token = $_SESSION['token'];
 		curl_setopt_array($curl, array(
 		CURLOPT_URL => 'https://crud.jonathansoto.mx/api/logout',
 		CURLOPT_RETURNTRANSFER => true,
@@ -89,6 +89,9 @@ Class AuthController{
 		CURLOPT_POSTFIELDS => array(
 			'email' => $email,
 			),
+		CURLOPT_HTTPHEADER => array(
+			'Authorization: Bearer '.$token,
+		),
 		));
 
 		$response = curl_exec($curl);
@@ -105,7 +108,6 @@ Class AuthController{
 			header("Location:".BASE_PATH."?error=true");
 		}
 	}
-	
 	
 }
 
