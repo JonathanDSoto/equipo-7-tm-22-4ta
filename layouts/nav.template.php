@@ -32,7 +32,7 @@
 					<div class="dropdown-menu dropdown-menu-end">
 						<!-- item-->
 						
-						<a class="dropdown-item" href="../users/usuario.php"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Perfil</span></a>
+						<a class="dropdown-item" href="<?= BASE_PATH ?>perfil-usuarios/"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Perfil</span></a>
 						<div class="dropdown-divider"></div>
 						<form action="<?= BASE_PATH ?>auth" method="post">
 							<input type="hidden" name="action" value="exit"> 
