@@ -103,13 +103,12 @@ Class AuthController{
 
 			session_destroy();
 
-			header("Location:".BASE_PATH."?success=true");
+			header("Location:".BASE_PATH."cerrar-sesion/?success=true");
 		}else{
 			header("Location:".BASE_PATH."?error=true");
 		}
 	}
 	
 }
-
 
 ?>
