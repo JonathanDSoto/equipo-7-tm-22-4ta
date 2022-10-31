@@ -10,6 +10,7 @@
 	$brands = $brandController->getBrands();
 
 ?> 
+<?php include "../app/validateLogin.php"; ?>
 <!doctype html>
 <html data-layout="vertical"data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 

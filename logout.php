@@ -2,6 +2,7 @@
 	include_once "app/config.php";
 ?> 
 <!doctype html>
+<?php include "../app/validateLogin.php"; ?>
 <html lang="en" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 
 
