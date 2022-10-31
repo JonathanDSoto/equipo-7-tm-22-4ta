@@ -41,7 +41,7 @@ if (isset($_POST['action'])) {
                 $created_by = strip_tags($_POST['created_by']);
                 $role = strip_tags($_POST['role']);
                 $password = strip_tags($_POST['password']);
-                $profile_photo_file = $_FILES['profile_photo_file']);
+                $profile_photo_file = ($_FILES['profile_photo_file']);
 
                 $userController = new UserController();
                 $userController -> create($name, $lastname, $email, $phone_number, $created_by, $role, $password, $profile_photo_file);
