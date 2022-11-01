@@ -142,25 +142,25 @@
 
                                                         <div class="mb-3">
                                                             <label for="customername-field" class="form-label">Nombre</label>
-                                                            <input type="text" id="name" name="name" class="form-control" placeholder="nombre..." required />
+                                                            <input pattern="[a-zA-Z\s]{3,255}"type="text" id="name" name="name" class="form-control" placeholder="nombre..." required />
                                                         </div>
 
                                                         <div class="mb-3">
                                                             <label for="customername-field" class="email" class="form-control" placeholder="correo..." required >email</label>
-                                                            <input type="email" id="email" name="email" class="form-control" placeholder="email..." required />
+                                                            <input pattern="\b[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,4}" type="email" id="email" name="email" class="form-control" placeholder="email..." required />
 
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="customername-field" class="email" class="form-control" placeholder="correo..." required >contraseña</label>
-                                                            <input type="password" id="password" name="password" class="form-control" placeholder="contraseña..." required />
+                                                            <input pattern="([\w\d\s/!%$@#?])+" title="La contraseña solo acepta letras, números y caracteres especiales (@ ! ? $ % #)." type="password" id="password" name="password" class="form-control" placeholder="contraseña..." required />
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="customername-field" class="email" class="form-control" placeholder="correo..." required >Telefono</label>
-                                                            <input type="text" id="phone_number" name="phone_number" class="form-control" placeholder="telefono..." required />
+                                                            <input pattern="[0-9]{10}" title="El teléfono solo acepta números de 10 dígitos."type="text" id="phone_number" name="phone_number" class="form-control" placeholder="telefono..." required />
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="customername-field" class="email" class="form-control" placeholder="correo..." required >is_suscribed</label>
-                                                            <input type="text" id="is_suscribed" name="is_suscribed" class="form-control" placeholder="Suscribed..." required />
+                                                            <input pattern="1" title="Debe ser 1."type="text" id="is_suscribed" name="is_suscribed" class="form-control" placeholder="Suscribed..."  required />
                                                         </div>
 
                                                         <div class="mb-3">

@@ -148,7 +148,6 @@
                                                         <th class="sort" data-sort="id">FOLIO</th>
                                                         <th class="sort" data-sort="customer_name">Cliente</th>
                                                         <th class="sort" data-sort="product_name">Producto</th>
-                                                        <th class="sort" data-sort="date">Fecha de Orden</th>
                                                         <th class="sort" data-sort="amount">Monto</th>
                                                         <th class="sort" data-sort="payment">Método de Pago</th>
                                                         <th class="sort" data-sort="status">Estado de entrega</th>
@@ -179,8 +178,7 @@
                                                                         <?php echo $arrayPresent->description?> <br>
                                                                     <?php }?>
                                                                 </p>
-                                                            <td class="date">bla<</td>
-                                                            <td class="amount">$<?= $arayP->folio ?></td>
+                                                            <td class="amount">$<?= $arayP->total ?></td>
                                                             <td class="payment"><?= $arayP->payment_type->name ?></td>
                                                             <td class="status"><span class="badge badge-soft-warning text-uppercase"><?= $arayP->order_status->name ?></span>
                                                             </td>
@@ -197,7 +195,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li class="list-inline-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Eliminar">
-                                                                        <a class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" href="#deleteOrder">
+                                                                        <a onClick = "remove(<?php echo $arayP->id ?>)" class="text-danger d-inline-block remove-item-btn" data-bs-toggle="modal" href="#deleteOrder">
                                                                             <i class="ri-delete-bin-5-fill fs-16"></i>
                                                                         </a>
                                                                     </li>
@@ -239,7 +237,7 @@
 
                                                         <div class="mb-3">
                                                             <label name="folio" for="customername-field" class="form-label">folio</label>
-                                                            <input type="text" id="customername-field" class="form-control" placeholder="folio..." required />
+                                                            <input pattern="[0-9]+" title="Solamente se admiten números." type="text" id="customername-field" class="form-control" placeholder="folio..." required />
                                                         </div>
 
                                                         <div class="mb-3">
@@ -260,7 +258,7 @@
                                                             <div class="col-md-6">
                                                                 <div>
                                                                     <label for="amount-field" class="form-label">Amount</label>
-                                                                    <input type="text" id="amount-field" class="form-control" placeholder="Total amount" required />
+                                                                    <input pattern="[0-9]+(/.[0-9]{2})?" title="Solamente se admiten números enteros o con punto decimal."type="text" id="amount-field" class="form-control" placeholder="Total amount" required />
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -302,25 +300,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade flip" id="deleteOrder" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-body p-5 text-center">
-                                                    <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
-                                                    <div class="mt-4 text-center">
-                                                        <h4>¿Está a punto de eliminar un pedido?</h4>
-                                                        <p class="text-muted fs-15 mb-4">Eliminar su pedido eliminará toda su información de nuestra base de datos.</p>
-                                                        <div class="hstack gap-2 justify-content-center remove">
-                                                            <button class="btn btn-link link-success fw-medium text-decoration-none" id="deleteRecord-close" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Cerrar</button>
-                                                            <button class="btn btn-danger" id="delete-record">Si, Eliminalo</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--end modal -->
                                 </div>
                             </div>
 
@@ -378,7 +357,7 @@
                 bodyFormData.append('action', 'delete');
                 bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>');
                 console.log(id);
-                axios.post('<?= BASE_PATH ?>productos',bodyFormData)
+                axios.post('<?= BASE_PATH ?>order',bodyFormData)
                 .then(function (response){
                             console.log('hola');
                             
@@ -395,7 +374,7 @@
             });  
         }
 
-        function addProduct() {
+        function addOrden() {
             document.getElementById('inputOculto').value = 'create';
             document.getElementById('name').value = "";
             document.getElementById('slug').value = "";
@@ -404,7 +383,7 @@
             document.getElementById('brand_id').value = 1;
         }
 
-        function editProduct(target) { 
+        function editOrden(target) { 
             document.getElementById('inputOculto').value = 'update';
 
             let product = JSON.parse(target.getAttribute('data-product'));
